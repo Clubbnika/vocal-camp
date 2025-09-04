@@ -17,7 +17,7 @@ export function Header() {
         >
           Home{' '}
         </Link>
-
+{/* 
         <div className='bg-white/20 h-5 w-[2px]'></div>
 
         <Link
@@ -39,8 +39,8 @@ export function Header() {
         >
           Account{' '}
         </Link>
-      </nav>
-      <div className="width-full h-[1px] mt-5 bg-white/10"></div>
+        <div className="width-full h-[1px] mt-5 bg-white/10"></div> */}
+        </nav>
     </header>
   );
 }
