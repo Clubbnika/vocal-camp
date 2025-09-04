@@ -1,5 +1,4 @@
-export function HomePage() {
-  return (
-    <div>Vocal Camp</div>
-  );
-}
+const HomePage = () => {
+  return <div>Це домашня</div>;
+};
+export default HomePage;

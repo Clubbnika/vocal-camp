@@ -1,5 +1,4 @@
-export function HomePage() {
-  return (
-    <div>Explore</div>
-  );
-}
+const ExplorePage = () => {
+  return <div>Це домашня сторінка</div>;
+};
+export default ExplorePage;
