@@ -17,7 +17,7 @@ export function Header() {
         >
           Home{' '}
         </Link>
-{/* 
+        
         <div className='bg-white/20 h-5 w-[2px]'></div>
 
         <Link
@@ -28,6 +28,7 @@ export function Header() {
         >
           Posts{' '}
         </Link>
+        {/* 
 
         <div className='bg-white/20 h-5 w-[2px]'></div>
 
@@ -38,9 +39,9 @@ export function Header() {
           href={PAGES.ACCOUNT}
         >
           Account{' '}
-        </Link>
-        <div className="width-full h-[1px] mt-5 bg-white/10"></div> */}
-        </nav>
+        </Link> */}
+        <div className="width-full h-[1px] mt-5 bg-white/10"></div>
+      </nav>
     </header>
   );
 }
