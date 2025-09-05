@@ -1,6 +1,11 @@
 export const PAGES = {
   HOME: '/',
-  POSTS: '/explore',
-  // ACCOUNT: '/account',
+  ABOUT: '/about',
+  EVENTS: '/events',
+  TEAM: '/team',
+  PRESENTS: '/presents',
+  PORTFOLIO: '/portfolio',
+  PRODUCTION: '/production',
+  CONTACTS:'/contacts',
   // PROFILE: (username: string) => `/user/${username}`,
 };

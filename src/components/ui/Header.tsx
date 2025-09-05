@@ -7,40 +7,94 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="ml-7 p-5 font-bold bg-black">
+    <header className="p-5 pl-7 font-bold bg-black sticky top-0 z-10">
       <nav className="flex items-center gap-4">
         <Link
           className={
-            pathname === PAGES.HOME ? 'text-[#78a068]' : 'text-white/80'
+            pathname === PAGES.HOME ? 'text-[#ff00be]' : 'text-white'
           }
           href={PAGES.HOME}
         >
-          Home{' '}
+          Home
         </Link>
-        
-        <div className='bg-white/20 h-5 w-[2px]'></div>
+
+        <div className="bg-white/20 h-5 w-[2px]"></div>
 
         <Link
           className={
-            pathname === PAGES.POSTS ? 'text-[#78a068]' : 'text-white/80'
+            pathname === PAGES.ABOUT ? 'text-[#ff00be]' : 'text-white'
           }
-          href={PAGES.POSTS}
+          href={PAGES.ABOUT}
         >
-          Posts{' '}
+          Про курси & Прайс
         </Link>
-        {/* 
 
-        <div className='bg-white/20 h-5 w-[2px]'></div>
+        <div className="bg-white/20 h-5 w-[2px]"></div>
 
         <Link
           className={
-            pathname === PAGES.ACCOUNT ? 'text-[#78a068]' : 'text-white/80'
+            pathname === PAGES.EVENTS ? 'text-[#ff00be]' : 'text-white'
           }
-          href={PAGES.ACCOUNT}
+          href={PAGES.EVENTS}
         >
-          Account{' '}
-        </Link> */}
-        <div className="width-full h-[1px] mt-5 bg-white/10"></div>
+          Заходи
+        </Link>
+
+        <div className="bg-white/20 h-5 w-[2px]"></div>
+
+        <Link
+          className={
+            pathname === PAGES.TEAM ? 'text-[#ff00be]' : 'text-white'
+          }
+          href={PAGES.TEAM}
+        >
+          Наша команда
+        </Link>
+
+        <div className="bg-white/20 h-5 w-[2px]"></div>
+
+        <Link
+          className={
+            pathname === PAGES.PRESENTS ? 'text-[#ff00be]' : 'text-white'
+          }
+          href={PAGES.PRESENTS}
+        >
+          Сертифікати
+        </Link>
+
+        <div className="bg-white/20 h-5 w-[2px]"></div>
+
+        <Link
+          className={
+            pathname === PAGES.PORTFOLIO ? 'text-[#ff00be]' : 'text-white'
+          }
+          href={PAGES.PORTFOLIO}
+        >
+          Портфоліо
+        </Link>
+
+        <div className="bg-white/20 h-5 w-[2px]"></div>
+
+        <Link
+          className={
+            pathname === PAGES.PRODUCTION ? 'text-[#ff00be]' : 'text-white'
+          }
+          href={PAGES.PRODUCTION}
+        >
+          Production
+        </Link>
+
+        <div className="bg-white/20 h-5 w-[2px]"></div>
+
+        <Link
+          className={
+            pathname === PAGES.CONTACTS ? 'text-[#ff00be]' : 'text-white'
+          }
+          href={PAGES.CONTACTS}
+        >
+          Контакти
+        </Link>
+
       </nav>
     </header>
   );
