@@ -7,11 +7,11 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="p-5 pl-7 font-bold bg-black sticky top-0 z-10">
+    <header className="p-5 pl-7 bg-black sticky top-0 z-10">
       <nav className="flex items-center gap-4">
         <Link
           className={
-            pathname === PAGES.HOME ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.HOME ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.HOME}
         >
@@ -22,18 +22,18 @@ export function Header() {
 
         <Link
           className={
-            pathname === PAGES.ABOUT ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.ABOUT ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.ABOUT}
         >
           Про курси & Прайс
         </Link>
 
-        <div className="bg-white/20 h-5 w-[2px]"></div>
+        <div className="bg-white/20 h-5 w-[1px]"></div>
 
         <Link
           className={
-            pathname === PAGES.EVENTS ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.EVENTS ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.EVENTS}
         >
@@ -44,18 +44,18 @@ export function Header() {
 
         <Link
           className={
-            pathname === PAGES.TEAM ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.TEAM ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.TEAM}
         >
           Наша команда
         </Link>
 
-        <div className="bg-white/20 h-5 w-[2px]"></div>
+        <div className="bg-white/20 h-5 w-[1px]"></div>
 
         <Link
           className={
-            pathname === PAGES.PRESENTS ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.PRESENTS ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.PRESENTS}
         >
@@ -66,7 +66,7 @@ export function Header() {
 
         <Link
           className={
-            pathname === PAGES.PORTFOLIO ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.PORTFOLIO ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.PORTFOLIO}
         >
@@ -77,7 +77,7 @@ export function Header() {
 
         <Link
           className={
-            pathname === PAGES.PRODUCTION ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.PRODUCTION ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.PRODUCTION}
         >
@@ -88,7 +88,7 @@ export function Header() {
 
         <Link
           className={
-            pathname === PAGES.CONTACTS ? 'text-[#ff00be]' : 'text-white'
+            pathname === PAGES.CONTACTS ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.CONTACTS}
         >
