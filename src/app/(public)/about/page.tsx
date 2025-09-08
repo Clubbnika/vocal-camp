@@ -95,9 +95,9 @@ const About = () => {
         </motion.div>
       </div>
 
-<MovingRows />
+      <MovingRows />
 
-      <div className="bg-gradient-to-b h-full from-transparent to-black/65 pb-10">
+      <div className="h-full bg-gradient-to-b from-transparent to-black/70 pb-10">
         <div className="max-w-[1040px] p-10 mx-auto mt-25 bg-black/65">
           <h1 className="text-white font-extrabold text-4xl text-center mb-8">Чому ми впевнені в тому, що займатися вокалом та досягати успіху у цій сфері може кожен?</h1>
 
@@ -126,7 +126,6 @@ const About = () => {
               alt=""
               className="h-30 w-30 rounded-full m-3 mr-7"
             />
-
             <p className=" text-white">Емінем. Відомий усьому світу репер народився у бідній родині, мав проблеми з однолітками, приймав участь у постійних бійках, після однієї з них навіть перебував у комі, працював різноробочим, кухарем та офіціантом.</p>
           </div>
         </div>
