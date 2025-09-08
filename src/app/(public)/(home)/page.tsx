@@ -3,6 +3,8 @@ import About from "../about/page";
 import AboutMC from "@/components/ui/MasterC";
 import Events from "../events/page";
 import Team from "../team/page";
+import Presents from "../presents/page";
+import Portfolio from "../portfolio/page";
 
 const HomePage = () => {
   return (
@@ -27,6 +29,8 @@ const HomePage = () => {
       <About />
       <Events />
       <Team />
+      <Presents />
+      <Portfolio />
     </div>
   );
 };

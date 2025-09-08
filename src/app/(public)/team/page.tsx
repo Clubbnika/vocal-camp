@@ -6,7 +6,7 @@ import { useState } from "react";
 const Team = () => {
   const teamMembers = [
     { name: "МАКСИМ БОНДАР", image: "/max.jpg" },
-    { name: "НІКА ОХТЕНЬ", image: "/nikaa.jpg" },
+    { name: "НІКА ОХТЕНЬ", image: "/nikaaa.jpg" },
     { name: "КОСТЯ ЦАРЕНКОВ", image: "/kost.png" },
     { name: "НАСТЯ ЧЕРНЕЦЬ", image: "/nasti.jpg" },
     { name: "ІРА НЕХАЄНКО", image: "/ira.png" },
