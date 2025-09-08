@@ -1,6 +1,7 @@
 import AboutVC from "@/components/ui/AboutVC";
 import About from "../about/page";
 import AboutMC from "@/components/ui/MasterC";
+import Events from "../events/page";
 
 const HomePage = () => {
   return (
@@ -23,6 +24,7 @@ const HomePage = () => {
       <AboutVC />
       <AboutMC />
       <About />
+      <Events />
     </div>
   );
 };

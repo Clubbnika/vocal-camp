@@ -1,5 +1,4 @@
 @import "tailwindcss/preflight";
-/* @tailwind components; */
 @tailwind utilities;
 
 @import "tailwindcss";
@@ -33,4 +32,31 @@ body {
   font-family: "Wix Madefor Display", sans-serif;
   font-weight: auto;
   font-style: normal;
+}
+/* globals.css або ваш CSS файл */
+
+@keyframes moving-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moving-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-moving-right {
+  animation: moving-right 100s linear infinite;
+}
+
+.animate-moving-left {
+  animation: moving-left 100s linear infinite;
 }
