@@ -4,6 +4,7 @@ import { Instagram, Send, Youtube } from "lucide-react";
 const Footer = () => {
   return (
     <>
+        <div className="mt-1"></div>
       <div className="w-full bg-black h-full flex flex-col mb-10">
 
         <div className="flex flex-row gap-50 pt-5 mx-auto">
