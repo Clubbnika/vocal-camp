@@ -22,6 +22,17 @@ export function Header() {
 
         <Link
           className={
+            pathname === PAGES.HOME ? 'text-[#ff00be] font-bold' : 'text-white'
+          }
+          href={PAGES.HOME}
+        >
+          Майстер-клас
+        </Link>
+
+        <div className="bg-white/20 h-5 w-[2px]"></div>
+
+        <Link
+          className={
             pathname === PAGES.ABOUT ? 'text-[#ff00be] font-bold' : 'text-white'
           }
           href={PAGES.ABOUT}
