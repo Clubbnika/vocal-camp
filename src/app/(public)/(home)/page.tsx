@@ -5,6 +5,7 @@ import Events from "../events/page";
 import Team from "../team/page";
 import Presents from "../presents/page";
 import Portfolio from "../portfolio/page";
+import Production from "../production/page";
 
 const HomePage = () => {
   return (
@@ -31,6 +32,7 @@ const HomePage = () => {
       <Team />
       <Presents />
       <Portfolio />
+      <Production />
     </div>
   );
 };

@@ -95,6 +95,17 @@ export function Header() {
           Контакти
         </Link>
 
+          <div className="bg-white/20 h-5 w-[2px]"></div>
+
+        <Link
+          className={
+            pathname === PAGES.CONTACTS ? 'text-[#ff00be] font-bold' : 'text-white'
+          }
+          href={PAGES.CONTACTS}
+        >
+          Новини
+        </Link>
+
       </nav>
     </header>
   );
