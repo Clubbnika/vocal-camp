@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="w-full">
-      <div className="bg-gradient-to-b from-transparent to-[#ff00be]/65 w-full flex flex-col mt-[35px] mx-auto pb-5">
+    <div className="w-full pt-25">
+      <div className="bg-gradient-to-b from-transparent to-[#ff00be]/65 w-full flex flex-col mx-auto pb-5">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
