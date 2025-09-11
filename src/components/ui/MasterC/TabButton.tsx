@@ -1,0 +1,22 @@
+import { 
+TAB_BUTTON_BASE_STYLE,
+TAB_BUTTON_ACTIVE_STYLE,
+TAB_BUTTON_INACTIVE_STYLE,
+} from "@/components/ui/MasterC/styles"
+
+interface TabButtonProps {
+  label: string;
+  isActive: boolean;
+  onClick: () => void;
+}
+
+const TabButton = ({ label, isActive, onClick }: TabButtonProps) => (
+  <button
+    onClick={onClick}
+    className={`${TAB_BUTTON_BASE_STYLE} ${isActive ? TAB_BUTTON_ACTIVE_STYLE : TAB_BUTTON_INACTIVE_STYLE}`}
+  >
+    {label}
+  </button>
+);
+
+export default TabButton;

@@ -38,15 +38,15 @@ export function Header() {
   };
 
   return (
-    <header className="p-2 pl-7 bg-black sticky top-0 z-10">
+    <header className="p-2 px-5 bg-black sticky top-0 z-10">
       <nav>
-        <ul className="flex items-center gap-4">
+        <ul className="flex items-center justify-between w-full">
           {tabs.map((tab) => (
-            <li key={tab.index}>
-              <div className="flex flex-row items-center">
+            <li key={tab.index} className="flex-grow text-center">
+              <div className="flex flex-row items-center justify-center space-x-4">
                 <a
                   href={tab.href}
-                  className={` px-3 py-2 text-white hover:text-[#ff00be] ${activeTab === tab.index ? 'text-[#ff00be]' : ''}`}
+                  className={`py-2 text-white hover:text-[#ff00be] ${activeTab === tab.index ? 'text-[#ff00be]' : ''}`}
                   onClick={(e) => {
                     e.preventDefault();
                     handleTabClick(tab.index, tab.href);
@@ -54,7 +54,7 @@ export function Header() {
                 >
                   {tab.name}
                 </a>
-                {tab.index !== tabs.length && <div className="bg-white/20 h-5 w-[2px]"></div>}
+                {tab.index !== tabs.length && <div className="bg-white/20 h-5 rounded-full w-[3px] mx-4"></div>} {/* Роздільники з відступами */}
               </div>
             </li>
           ))}
@@ -63,128 +63,3 @@ export function Header() {
     </header>
   );
 }
-
-
-// 'use client';
-// import Link from 'next/link';
-// import { PAGES } from '@/app/config/pages.config';
-// import { usePathname } from 'next/navigation';
-
-// export function Header() {
-//   const pathname = usePathname();
-
-//   return (
-//     <header className="p-5 pl-7 bg-black sticky top-0 z-10">
-//       <nav className="flex items-center gap-4">
-//         <Link
-//           className={
-//             pathname === PAGES.HOME ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.HOME}
-//         >
-//           Home
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[2px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.HOME ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.HOME}
-//         >
-//           Майстер-клас
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[2px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.ABOUT ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.ABOUT}
-//         >
-//           Про курси & Прайс
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[1px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.EVENTS ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.EVENTS}
-//         >
-//           Заходи
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[2px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.TEAM ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.TEAM}
-//         >
-//           Наша команда
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[1px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.PRESENTS ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.PRESENTS}
-//         >
-//           Сертифікати
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[2px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.PORTFOLIO ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.PORTFOLIO}
-//         >
-//           Портфоліо
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[2px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.PRODUCTION ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.PRODUCTION}
-//         >
-//           Production
-//         </Link>
-
-//         <div className="bg-white/20 h-5 w-[2px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.CONTACTS ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.CONTACTS}
-//         >
-//           Контакти
-//         </Link>
-
-//           <div className="bg-white/20 h-5 w-[2px]"></div>
-
-//         <Link
-//           className={
-//             pathname === PAGES.CONTACTS ? 'text-[#ff00be] font-bold' : 'text-white'
-//           }
-//           href={PAGES.CONTACTS}
-//         >
-//           Новини
-//         </Link>
-
-//       </nav>
-//     </header>
-//   );
-// }

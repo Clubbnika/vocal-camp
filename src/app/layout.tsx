@@ -7,6 +7,7 @@ import Footer from "@/components/ui/Footer";
 import TopButton from "@/components/ui/TopButton";
 import { TabProvider, useTabContext } from "@/components/ui/TabContext";
 import { useRouter } from 'next/navigation';
+import BurgerMenu from '@/components/ui/BurgerMenu';
 
 const RootLayoutContent = ({ children }: PropsWithChildren<unknown>) => {
   const { setActiveTab } = useTabContext();
@@ -43,6 +44,7 @@ const RootLayoutContent = ({ children }: PropsWithChildren<unknown>) => {
   return (
     <>
       <Header />
+      {/* <BurgerMenu /> */}
       {children}
       <TopButton />
       <div id="contacts" ref={contactsRef}>

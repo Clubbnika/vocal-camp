@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
 import AboutVC from "@/components/ui/AboutVC";
-import AboutMC from "@/components/ui/MasterC";
+import AboutMC from "@/components/ui/MasterC/MasterC";
 import About from "../about/page";
 import Events from "../events/page";
 import Team from "../team/page";
@@ -63,6 +63,20 @@ const HomePage = () => {
     };
   }, [router, setActiveTab]);
 
+  const handleButtonClick = () => {
+    // Встановлюємо активну вкладку одразу, щоб UI оновився миттєво
+    setActiveTab(3);
+
+    // Оновлюємо URL для правильного відображення в адресному рядку
+    router.push('#masterclass?section=register');
+
+    // Прокручуємо до потрібної секції вручну, що гарантує плавний скрол
+    const masterclassSection = sectionRefs.current.masterclass;
+    if (masterclassSection) {
+      masterclassSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <div id="home" ref={(el) => {
@@ -76,7 +90,10 @@ const HomePage = () => {
                 alt="Vocal Camp logo"
                 className="w-[300px]"
               />
-              <button className="inline-block text-black bg-white px-4 py-2 rounded-3xl mb-80 mt-2 font-bold hover:bg-[#ff00be] transition duration-300">
+              <button
+                onClick={handleButtonClick}
+                className="inline-block text-black bg-white px-4 py-2 rounded-3xl mb-80 mt-2 font-bold hover:bg-[#ff00be] transition duration-300"
+              >
                 ЗАПИСАТИСЯ НА БЕЗКОШТОВНИЙ МАЙСТЕР-КЛАС!
               </button>
             </div>

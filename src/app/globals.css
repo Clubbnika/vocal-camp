@@ -19,6 +19,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #ff00be;
   }
 }
 
@@ -33,7 +34,6 @@ body {
   font-weight: auto;
   font-style: normal;
 }
-/* globals.css або ваш CSS файл */
 
 @keyframes moving-right {
   0% {
@@ -60,3 +60,5 @@ body {
 .animate-moving-left {
   animation: moving-left 100s linear infinite;
 }
+
+

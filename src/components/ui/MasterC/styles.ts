@@ -1,0 +1,11 @@
+export const TAB_BUTTON_BASE_STYLE = 'text-white text-lg font-semibold px-5 py-2 flex-1';
+export const TAB_BUTTON_ACTIVE_STYLE = 'bg-[#ff00be]/50';
+export const TAB_BUTTON_INACTIVE_STYLE = 'bg-transparent';
+export const TEXT_STYLE = 'text-white/70 text-lg';
+export const INPUT_STYLE = 'p-2 border-1 border-white/10 bg-black';
+export const DATE_BUTTON_BASE_STYLE = 'p-2 text-center';
+export const DATE_BUTTON_AVAILABLE_STYLE = 'bg-[#ff00be] text-white';
+export const DATE_BUTTON_UNAVAILABLE_STYLE = 'bg-gray-500 text-gray-200';
+export const DATE_BUTTON_DISABLED_STYLE = 'cursor-not-allowed opacity-50';
+export const ARROW_BUTTON_STYLE = 'hover:bg-[#ff00be] text-white p-1 rounded-full';
+export const SUBMIT_BUTTON_STYLE = 'hover:bg-[#ff00be] bg-white text-black py-2 px-6 mt-4';
