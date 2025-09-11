@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
 import AboutVC from "@/components/ui/AboutVC";
@@ -102,11 +102,13 @@ const HomePage = () => {
         <AboutVC />
       </div>
 
-      <div id="masterclass" className="min-h-[50vh]" ref={(el) => {
-        sectionRefs.current.masterclass = el;
-      }}>
-        <AboutMC />
-      </div>
+      <Suspense>
+        <div id="masterclass" className="min-h-[50vh]" ref={(el) => {
+          sectionRefs.current.masterclass = el;
+        }}>
+          <AboutMC />
+        </div>
+      </Suspense>
 
       <div id="about" className="min-h-[50vh]" ref={(el) => {
         sectionRefs.current.about = el;

@@ -1,17 +1,13 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import TabButton from './TabButton';
 import FreeMasterClassTab from './FreeMasterClassTab';
 import HowMasterClassWorksTab from './HowMasterClassWorksTab';
 import RegisterMasterClassTab from './RegisterMasterClassTab';
-import {
-  getWeekDates,
-} from './utils';
+import { getWeekDates } from './utils';
+import { SearchParamsHandler } from '@/components/SearchParamsHandler'; // Імпорт нового компонента
 
 const MasterC = () => {
-  const searchParams = useSearchParams();
-  const section = searchParams.get('section');
   const initialTab = 3;
   const [selectedTab, setSelectedTab] = useState(initialTab);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -20,14 +16,17 @@ const MasterC = () => {
   const [userName, setUserName] = useState<string>('');
   const [userPhone, setUserPhone] = useState<string>('');
   const [userTelegram, setUserTelegram] = useState<string>('');
+  const [section, setSection] = useState<string | null>(null); // Локальний стан для section
 
   const nextWeekDates = getWeekDates(currentWeek);
 
-  useEffect(() => {
-    if (section === 'register') {
+  // Обробник для колбека з SearchParamsHandler
+  const handleSectionChange = (newSection: string | null) => {
+    setSection(newSection);
+    if (newSection === 'register') {
       setSelectedTab(3);
     }
-  }, [section]);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -98,23 +97,26 @@ const MasterC = () => {
           </div>
         </div>
 
-        {selectedTab === 1 && <FreeMasterClassTab />}
-        {selectedTab === 2 && <HowMasterClassWorksTab />}
-        {selectedTab === 3 && (
-          <RegisterMasterClassTab
-            selectedDate={selectedDate}
-            selectedTime={selectedTime}
-            currentWeek={currentWeek}
-            userName={userName}
-            userPhone={userPhone}
-            userTelegram={userTelegram}
-            onDateChange={handleDateChange}
-            onTimeChange={handleTimeChange}
-            onWeekChange={handleWeekChange}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-          />
-        )}
+        {/* Обгорніть SearchParamsHandler у Suspense тут, якщо MasterC рендериться в серверному компоненті. Але краще в page.tsx */}
+        <SearchParamsHandler onSectionChange={handleSectionChange}>
+          {selectedTab === 1 && <FreeMasterClassTab />}
+          {selectedTab === 2 && <HowMasterClassWorksTab />}
+          {selectedTab === 3 && (
+            <RegisterMasterClassTab
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
+              currentWeek={currentWeek}
+              userName={userName}
+              userPhone={userPhone}
+              userTelegram={userTelegram}
+              onDateChange={handleDateChange}
+              onTimeChange={handleTimeChange}
+              onWeekChange={handleWeekChange}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+            />
+          )}
+        </SearchParamsHandler>
       </div>
     </div>
   );
