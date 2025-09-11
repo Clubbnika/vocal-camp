@@ -68,7 +68,7 @@ const HomePage = () => {
     setActiveTab(3);
 
     // Оновлюємо URL для правильного відображення в адресному рядку
-    router.push('#masterclass?section=register');
+    router.push('#masterclass');
 
     // Прокручуємо до потрібної секції вручну, що гарантує плавний скрол
     const masterclassSection = sectionRefs.current.masterclass;
