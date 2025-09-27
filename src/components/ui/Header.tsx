@@ -1,3 +1,4 @@
+
 'use client';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
@@ -38,15 +39,15 @@ export function Header() {
   };
 
   return (
-    <header className="p-2 px-5 bg-black sticky top-0 z-10">
-      <nav>
-        <ul className="flex items-center justify-between w-full">
+    <header className="p-2 bg-black sticky top-0 z-10 w-full" style={{ paddingLeft: 0, paddingRight: 0 }}>
+      <nav className="w-full">
+        <ul className="flex items-center justify-between w-full mx-auto max-w-[1200px] px-4 p-2 overflow-x-auto">
           {tabs.map((tab) => (
-            <li key={tab.index} className="flex-grow text-center">
-              <div className="flex flex-row items-center justify-center space-x-4">
+            <li key={tab.index} className="flex-shrink-0 text-center"> 
+              <div className="flex flex-row items-center justify-center space-x-1.5">
                 <a
                   href={tab.href}
-                  className={`py-2 text-white hover:text-[#ff00be] ${activeTab === tab.index ? 'text-[#ff00be]' : ''}`}
+                  className={`py-1.5 text-white hover:text-[#ff00be] ${activeTab === tab.index ? 'text-[#ff00be]' : ''} whitespace-nowrap text-sm`}
                   onClick={(e) => {
                     e.preventDefault();
                     handleTabClick(tab.index, tab.href);
@@ -54,7 +55,7 @@ export function Header() {
                 >
                   {tab.name}
                 </a>
-                {tab.index !== tabs.length && <div className="bg-white/20 h-5 rounded-full w-[3px] mx-4"></div>} {/* Роздільники з відступами */}
+                {/* {tab.index !== tabs.length && <div className="bg-white/20 h-5 rounded-full w-0.5 mx-1"></div>} */}
               </div>
             </li>
           ))}
