@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
 import AboutVC from "@/components/ui/AboutVC";
@@ -16,7 +16,6 @@ const HomePage = () => {
   const { setActiveTab } = useTabContext();
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({
     home: null,
-    'about-vc': null,
     masterclass: null,
     about: null,
     events: null,
@@ -25,16 +24,43 @@ const HomePage = () => {
     portfolio: null,
     production: null,
     news: null,
-    contacts: null,
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const sectionToTabIndex = {
+    home: 1,
+    masterclass: 2,
+    about: 3,
+    events: 4,
+    team: 5,
+    certificates: 6,
+    portfolio: 7,
+    production: 8,
+    news: 9,
+  };
+
+  const makeSectionRef = useCallback(
+    (sectionId: string) => (el: HTMLElement | null) => {
+      sectionRefs.current[sectionId] = el;
+      if (el && observerRef.current) {
+        observerRef.current.observe(el);
+      }
+    },
+    []
+  );
+
+  const createObserver = useCallback(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id;
-            const tabIndex = Object.keys(sectionRefs.current).indexOf(sectionId) + 1;
+            const tabIndex = sectionToTabIndex[sectionId as keyof typeof sectionToTabIndex] || 1;
             setActiveTab(tabIndex);
             router.push(`#${sectionId}`, { scroll: false });
           }
@@ -46,31 +72,38 @@ const HomePage = () => {
       }
     );
 
-    Object.keys(sectionRefs.current).forEach((key) => {
-      const element = sectionRefs.current[key];
+    Object.values(sectionRefs.current).forEach((element) => {
       if (element) {
-        observer.observe(element);
+        observerRef.current?.observe(element);
       }
     });
-
-    return () => {
-      Object.keys(sectionRefs.current).forEach((key) => {
-        const element = sectionRefs.current[key];
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
-    };
   }, [router, setActiveTab]);
 
+  useEffect(() => {
+    createObserver();
+
+    return () => {
+      observerRef.current?.disconnect();
+    };
+  }, [createObserver]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (observerRef.current) {
+        Object.values(sectionRefs.current).forEach((element) => {
+          if (element) {
+            observerRef.current!.observe(element); 
+          }
+        });
+      }
+    }, 100); 
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   const handleButtonClick = () => {
-    // Встановлюємо активну вкладку одразу, щоб UI оновився миттєво
-    setActiveTab(3);
-
-    // Оновлюємо URL для правильного відображення в адресному рядку
+    setActiveTab(2);
     router.push('#masterclass');
-
-    // Прокручуємо до потрібної секції вручну, що гарантує плавний скрол
     const masterclassSection = sectionRefs.current.masterclass;
     if (masterclassSection) {
       masterclassSection.scrollIntoView({ behavior: 'smooth' });
@@ -79,76 +112,52 @@ const HomePage = () => {
 
   return (
     <>
-      <div id="home" ref={(el) => {
-        sectionRefs.current.home = el;
-      }}>
-        <div className="relative min-h-screen bg-[url('/phone.png')] bg-cover bg-center bg-repeat bg-fixed">
-          <div className="flex justify-center">
-            <div className="max-w-[1040px] w-full flex flex-col mt-35 items-center">
-              <img
-                src="/logo.png"
-                alt="Vocal Camp logo"
-                className="w-[300px]"
-              />
-              <button
-                onClick={handleButtonClick}
-                className="inline-block text-black bg-white px-4 py-2 rounded-3xl mb-80 mt-2 font-bold hover:bg-[#ff00be] transition duration-300"
-              >
-                ЗАПИСАТИСЯ НА БЕЗКОШТОВНИЙ МАЙСТЕР-КЛАС!
-              </button>
-            </div>
+      <div id="home" ref={makeSectionRef('home')} className="relative min-h-screen">
+        <div className="flex justify-center items-center h-screen">
+          <div className="max-w-[1040px] w-full flex flex-col items-center p-4 mt-[-50px]">
+            <img src="/logo.png" alt="Vocal Camp logo" className="w-[300px] mb-4" />
+            <button
+              onClick={handleButtonClick}
+              className="inline-block text-black bg-white px-4 py-2 rounded-3xl mb-4 font-bold hover:bg-[#ff00be] transition duration-300"
+            >
+              ЗАПИСАТИСЯ НА БЕЗКОШТОВНИЙ МАЙСТЕР-КЛАС!
+            </button>
           </div>
         </div>
         <AboutVC />
       </div>
 
       <Suspense>
-        <div id="masterclass" className="min-h-[50vh]" ref={(el) => {
-          sectionRefs.current.masterclass = el;
-        }}>
+        <div id="masterclass" className="min-h-[50vh]" ref={makeSectionRef('masterclass')}>
           <AboutMC />
         </div>
       </Suspense>
 
-      <div id="about" className="min-h-[50vh]" ref={(el) => {
-        sectionRefs.current.about = el;
-      }}>
+      <div id="about" className="min-h-[50vh]" ref={makeSectionRef('about')} style={{ marginTop: '1rem' }}>
         <About />
       </div>
 
-      <div id="events" ref={(el) => {
-        sectionRefs.current.events = el;
-      }}>
+      <div id="events" ref={makeSectionRef('events')} style={{ marginTop: '1rem' }}>
         <Events />
       </div>
 
-      <div id="team" ref={(el) => {
-        sectionRefs.current.team = el;
-      }}>
+      <div id="team" ref={makeSectionRef('team')} style={{ marginTop: '1rem' }}>
         <Team />
       </div>
 
-      <div id="certificates" ref={(el) => {
-        sectionRefs.current.certificates = el;
-      }}>
+      <div id="certificates" ref={makeSectionRef('certificates')} style={{ marginTop: '1rem' }}>
         <Presents />
       </div>
 
-      <div id="portfolio" ref={(el) => {
-        sectionRefs.current.portfolio = el;
-      }}>
+      <div id="portfolio" ref={makeSectionRef('portfolio')} style={{ marginTop: '1rem' }}>
         <Portfolio />
       </div>
 
-      <div id="production" ref={(el) => {
-        sectionRefs.current.production = el;
-      }}>
+      <div id="production" ref={makeSectionRef('production')} style={{ marginTop: '1rem' }}>
         <Production />
       </div>
 
-      <div id="news" ref={(el) => {
-        sectionRefs.current.news = el;
-      }}></div>
+      <div id="news" ref={makeSectionRef('news')} style={{ marginTop: '1rem' }}></div>
     </>
   );
 };

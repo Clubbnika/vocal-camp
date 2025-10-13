@@ -5,7 +5,7 @@ import FreeMasterClassTab from './FreeMasterClassTab';
 import HowMasterClassWorksTab from './HowMasterClassWorksTab';
 import RegisterMasterClassTab from './RegisterMasterClassTab';
 import { getWeekDates } from './utils';
-import { SearchParamsHandler } from '@/components/SearchParamsHandler'; // Імпорт нового компонента
+import { SearchParamsHandler } from '@/components/SearchParamsHandler';
 
 const MasterC = () => {
   const initialTab = 3;
@@ -16,11 +16,10 @@ const MasterC = () => {
   const [userName, setUserName] = useState<string>('');
   const [userPhone, setUserPhone] = useState<string>('');
   const [userTelegram, setUserTelegram] = useState<string>('');
-  const [section, setSection] = useState<string | null>(null); // Локальний стан для section
+  const [section, setSection] = useState<string | null>(null);
 
   const nextWeekDates = getWeekDates(currentWeek);
 
-  // Обробник для колбека з SearchParamsHandler
   const handleSectionChange = (newSection: string | null) => {
     setSection(newSection);
     if (newSection === 'register') {
@@ -63,16 +62,12 @@ const MasterC = () => {
     });
   };
 
-  const isPrevWeekAvailable = (): boolean => {
-    const today = new Date();
-    const selectedWeekDate = getWeekDates(currentWeek)[0];
-    return today.getTime() > selectedWeekDate.getTime();
-  };
-
   return (
-    <div className="mb-25 max-w-[1040px] w-full flex mt-45 flex-col mx-auto items-center bg-black/60 p-10">
+    <div className='pb-20 pt-45'>
+    <div className="max-w-[1040px] w-full flex flex-col mx-auto items-center bg-black/60 p-6 md:p-10">
       <div className="flex flex-col w-full">
-        <div className="flex justify-between mb-10">
+        {/* Адаптуємо кнопки вкладок */}
+        <div className="flex flex-col md:flex-row justify-between mb-10">
           <div className="flex w-full bg-black relative">
             <TabButton
               label="Запрошуємо!"
@@ -90,9 +85,7 @@ const MasterC = () => {
               onClick={() => setSelectedTab(3)}
             />
             <div
-              className={`absolute bottom-0 left-0 w-1/3 h-1 bg-[#ff00be] transition-all duration-500 ${
-                selectedTab === 1 ? 'left-0' : selectedTab === 2 ? 'left-[33.4%]' : 'left-[66.71%]'
-              }`}
+              className={`absolute bottom-0 left-0 w-1/3 h-1 bg-[#ff00be] transition-all duration-500 ${selectedTab === 1 ? 'left-0' : selectedTab === 2 ? 'left-[33.4%]' : 'left-[66.71%]'}`}
             />
           </div>
         </div>
@@ -119,6 +112,7 @@ const MasterC = () => {
         </SearchParamsHandler>
       </div>
     </div>
+              </div>
   );
 };
 

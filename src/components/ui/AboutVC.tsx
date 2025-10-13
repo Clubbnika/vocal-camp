@@ -4,21 +4,20 @@ import { FC } from 'react';
 const commonStyles: React.CSSProperties = {
   textShadow: '0 0px 10px rgba(0, 0, 0, 1)',
   textAlign: 'left',
-  marginBottom: '2.5rem',
+  marginBottom: '1rem',
   alignSelf: 'flex-start',
 };
 
 const AboutVC: FC = () => {
   return (
-    <div className="bg-black w-full">
-      <div className="max-w-[1040px] w-full flex flex-col p-10 mx-auto items-center">
+    <div className="bg-black w-full" style={{ marginTop: '1rem' }}>
+      <div className="max-w-[1040px] w-full flex flex-col p-4 pt-8 pb-8 mx-auto items-center">
         <div
           className="text-[#ff00be] text-5xl font-extrabold"
-          style={{ ...commonStyles, marginBottom: '2.5rem', textShadow: '0 0px 20px rgba(0, 0, 0, 1)' }}
+          style={{ ...commonStyles, marginBottom: '1rem', textShadow: '0 0px 20px rgba(0, 0, 0, 1)' }}
         >
           Vocal Camp - більше ніж уроки вокалу
         </div>
-
         <p
           className="text-white text-[16px]"
           style={commonStyles}
@@ -34,6 +33,6 @@ const AboutVC: FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default AboutVC;

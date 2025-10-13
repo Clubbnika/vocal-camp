@@ -86,7 +86,7 @@ export default function RootLayout({ children }: PropsWithChildren<unknown>) {
             padding: 2px 0 !important;
             box-sizing: border-box;
             background: black !important;
-            position: sticky;
+    position: fixed;
             top: 0;
             z-index: 10;
             left: 0 !important;

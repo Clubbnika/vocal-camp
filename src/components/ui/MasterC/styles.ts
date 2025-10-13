@@ -5,6 +5,7 @@ export const TEXT_STYLE = 'text-white/70 text-lg';
 export const INPUT_STYLE = 'p-2 border-1 border-white/10 bg-black';
 export const DATE_BUTTON_BASE_STYLE = 'p-2 text-center';
 export const DATE_BUTTON_AVAILABLE_STYLE = 'bg-[#ff00be] text-white';
+export const DATE_BUTTON_AVAILABLE_STYLE_CLICKED = 'border-2 border-white';
 export const DATE_BUTTON_UNAVAILABLE_STYLE = 'bg-gray-500 text-gray-200';
 export const DATE_BUTTON_DISABLED_STYLE = 'cursor-not-allowed opacity-50';
 export const ARROW_BUTTON_STYLE = 'hover:bg-[#ff00be] text-white p-1 rounded-full';
