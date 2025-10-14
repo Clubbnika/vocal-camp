@@ -9,6 +9,8 @@ import {
   BUTTON_STYLE,
 } from '@/components/ui/About/styles'
 import { motion } from "framer-motion";
+import { useState } from 'react';
+import PriceModal from './PriceModal';
 
 interface SectionCardProps {
   heading: string;
@@ -39,6 +41,19 @@ const SectionCard = ({
   paddingBottom,
   headingStyle,
 }: SectionCardProps) => {
+  // Створюємо стан для модального вікна
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Функція для відкриття модального вікна
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Функція для закриття модального вікна
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <motion.div {...MOTION_PROPS} className={`${SECTION_CONTAINER_STYLE} ${marginTop || ''} ${paddingBottom || ''}`}>
       {imageFirst ? (
@@ -49,7 +64,15 @@ const SectionCard = ({
           <div className={`${CARD_CONTAINER_STYLE} ${TEXT_CARD_STYLE}`}>
             <h1 className={headingStyle || HEADING_STYLE}>{heading}</h1>
             <p className={PARAGRAPH_STYLE} dangerouslySetInnerHTML={{ __html: text }} />
-            {hasButton && <button className={BUTTON_STYLE}>{buttonText}</button>}
+            {hasButton && (
+              <button
+                onClick={openModal} // Відкриваємо модальне вікно при кліку
+                id="openModalBtn"
+                className={BUTTON_STYLE}
+              >
+                {buttonText}
+              </button>
+            )}
           </div>
         </>
       ) : (
@@ -57,13 +80,22 @@ const SectionCard = ({
           <div className={`${CARD_CONTAINER_STYLE} ${TEXT_CARD_STYLE} mr-5`}>
             <h1 className={`${headingStyle || HEADING_STYLE} mr-4`}>{heading}</h1>
             <p className={`${PARAGRAPH_STYLE} mr-4`} dangerouslySetInnerHTML={{ __html: text }} />
-            {hasButton && <button className={`${BUTTON_STYLE} mr-4`}>{buttonText}</button>}
+            {hasButton && (
+              <button
+                onClick={openModal} // Відкриваємо модальне вікно при кліку
+                className={`${BUTTON_STYLE} mr-4`}
+              >
+                {buttonText}
+              </button>
+            )}
           </div>
           <div className={`${CARD_CONTAINER_STYLE} ${IMAGE_CARD_STYLE}`}>
             <img src={imageSrc} alt={imageAlt} className={imageClass} />
           </div>
         </>
       )}
+
+      {isModalOpen && <PriceModal onClose={closeModal} />}
     </motion.div>
   );
 };

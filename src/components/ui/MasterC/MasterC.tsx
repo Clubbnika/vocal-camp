@@ -90,7 +90,6 @@ const MasterC = () => {
           </div>
         </div>
 
-        {/* Обгорніть SearchParamsHandler у Suspense тут, якщо MasterC рендериться в серверному компоненті. Але краще в page.tsx */}
         <SearchParamsHandler onSectionChange={handleSectionChange}>
           {selectedTab === 1 && <FreeMasterClassTab />}
           {selectedTab === 2 && <HowMasterClassWorksTab />}

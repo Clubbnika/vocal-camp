@@ -14,7 +14,7 @@ export const sections = [
     extraClass: "mr-5",
     hasButton: false,
     marginTop: "mt-20",
-    headingStyle: HEADING_STYLE, // Використовуємо імпортований стиль
+    headingStyle: HEADING_STYLE,
   },
   {
     heading: "Про курс",

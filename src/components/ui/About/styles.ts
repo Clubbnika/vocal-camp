@@ -11,7 +11,6 @@ export const STORY_IMAGE_STYLE = "h-30 w-30 rounded-full m-3 mr-7";
 export const STORY_TEXT_STYLE = "text-white";
 export const MAIN_HEADING_STYLE = "text-white font-extrabold text-4xl text-center mb-8";
 
-// Анімація для motion.div
 export const MOTION_PROPS = {
   initial: { opacity: 0, y: 50 },
   whileInView: { opacity: 1, y: 0 },
