@@ -4,19 +4,23 @@ import TabButton from './TabButton';
 import FreeMasterClassTab from './FreeMasterClassTab';
 import HowMasterClassWorksTab from './HowMasterClassWorksTab';
 import RegisterMasterClassTab from './RegisterMasterClassTab';
-import { getWeekDates } from './utils';
+import { getWeekDates, allowedSlots } from './utils'; 
 import { SearchParamsHandler } from '@/components/SearchParamsHandler';
+import emailjs from '@emailjs/browser';
 
 const MasterC = () => {
   const initialTab = 3;
   const [selectedTab, setSelectedTab] = useState(initialTab);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [currentWeek, setCurrentWeek] = useState<number>(0);
   const [userName, setUserName] = useState<string>('');
   const [userPhone, setUserPhone] = useState<string>('');
   const [userTelegram, setUserTelegram] = useState<string>('');
   const [section, setSection] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null); 
+  const [success, setSuccess] = useState<boolean>(false); 
+
+  emailjs.init('IZRqHsU2-TVjoCSN4');
 
   const nextWeekDates = getWeekDates(currentWeek);
 
@@ -40,78 +44,119 @@ const MasterC = () => {
 
   const handleDateChange = (date: string) => {
     setSelectedDate(date);
-    setSelectedTime(null);
-  };
+    setError(null);
 
-  const handleTimeChange = (time: string) => {
-    setSelectedTime(time);
+    const selectedDateObj = new Date(date);
+    const day = selectedDateObj.getDay();
+
+    const daySlots = allowedSlots[day] || [];
+    if (daySlots.length > 0) {
+      const selectedTime = daySlots[0];
+      console.log(`Автоматично вибрано час для ${date}: ${selectedTime}`);
+    } else {
+      console.warn('Слоти для дня не знайдено');
+    }
   };
 
   const handleWeekChange = (week: number) => {
     setCurrentWeek(week);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
-      userName,
-      userPhone,
-      userTelegram,
-      selectedDate,
-      selectedTime,
-    });
+
+    if (!userName.trim() || !userPhone.trim() || !userTelegram.trim() || !selectedDate) {
+      setError('Будь ласка, заповніть всі поля та виберіть дату.');
+      setSuccess(false);
+      return;
+    }
+
+    const selectedDateObj = new Date(selectedDate);
+    const day = selectedDateObj.getDay();
+    const daySlots = allowedSlots[day] || [];
+    const selectedTime = daySlots.length > 0 ? daySlots[0] : 'Не вказано';
+
+    const templateParams = {
+      user_name: userName,
+      user_phone: userPhone,
+      user_telegram: userTelegram,
+      selected_date: selectedDate,
+      selected_time: selectedTime,
+    };
+
+    try {
+      const response = await emailjs.send(
+        'service_u5fsdod',
+        'template_98zijkc',
+        templateParams,
+        'IZRqHsU2-TVjoCSN4'
+      );
+
+      console.log('Email відправлено!', response.status, response.text);
+      setSuccess(true);
+      setError(null);
+
+      setUserName('');
+      setUserPhone('');
+      setUserTelegram('');
+      setSelectedDate(null);
+    } catch (error) {
+      console.error('Помилка відправки email:', error);
+      setError('Помилка відправки. Спробуйте ще раз або зв’яжіться з нами напряму.');
+      setSuccess(false);
+    }
   };
 
   return (
     <div className='pb-20 pt-45'>
-    <div className="max-w-[1040px] w-full flex flex-col mx-auto items-center bg-black/60 p-6 md:p-10">
-      <div className="flex flex-col w-full">
-        {/* Адаптуємо кнопки вкладок */}
-        <div className="flex flex-col md:flex-row justify-between mb-10">
-          <div className="flex w-full bg-black relative">
-            <TabButton
-              label="Запрошуємо!"
-              isActive={selectedTab === 1}
-              onClick={() => setSelectedTab(1)}
-            />
-            <TabButton
-              label="Як проходить майстер-клас?"
-              isActive={selectedTab === 2}
-              onClick={() => setSelectedTab(2)}
-            />
-            <TabButton
-              label="Записатися!"
-              isActive={selectedTab === 3}
-              onClick={() => setSelectedTab(3)}
-            />
-            <div
-              className={`absolute bottom-0 left-0 w-1/3 h-1 bg-[#ff00be] transition-all duration-500 ${selectedTab === 1 ? 'left-0' : selectedTab === 2 ? 'left-[33.4%]' : 'left-[66.71%]'}`}
-            />
+      <div className="max-w-[1040px] w-full flex flex-col mx-auto items-center bg-black/60 p-6 md:p-10">
+        <div className="flex flex-col w-full">
+          <div className="flex flex-col md:flex-row justify-between mb-10">
+            <div className="flex w-full bg-black relative">
+              <TabButton
+                label="Запрошуємо!"
+                isActive={selectedTab === 1}
+                onClick={() => setSelectedTab(1)}
+              />
+              <TabButton
+                label="Як проходить майстер-клас?"
+                isActive={selectedTab === 2}
+                onClick={() => setSelectedTab(2)}
+              />
+              <TabButton
+                label="Записатися!"
+                isActive={selectedTab === 3}
+                onClick={() => setSelectedTab(3)}
+              />
+              <div
+                className={`absolute bottom-0 left-0 w-1/3 h-1 bg-[#ff00be] transition-all duration-500 ${selectedTab === 1 ? 'left-0' : selectedTab === 2 ? 'left-[33.4%]' : 'left-[66.71%]'}`}
+              />
+            </div>
           </div>
-        </div>
 
-        <SearchParamsHandler onSectionChange={handleSectionChange}>
-          {selectedTab === 1 && <FreeMasterClassTab />}
-          {selectedTab === 2 && <HowMasterClassWorksTab />}
-          {selectedTab === 3 && (
-            <RegisterMasterClassTab
-              selectedDate={selectedDate}
-              selectedTime={selectedTime}
-              currentWeek={currentWeek}
-              userName={userName}
-              userPhone={userPhone}
-              userTelegram={userTelegram}
-              onDateChange={handleDateChange}
-              onTimeChange={handleTimeChange}
-              onWeekChange={handleWeekChange}
-              onChange={handleChange}
-              onSubmit={handleSubmit}
-            />
-          )}
-        </SearchParamsHandler>
+          <SearchParamsHandler onSectionChange={handleSectionChange}>
+            {selectedTab === 1 && <FreeMasterClassTab />}
+            {selectedTab === 2 && <HowMasterClassWorksTab />}
+            {selectedTab === 3 && (
+              <RegisterMasterClassTab
+                selectedDate={selectedDate}
+                currentWeek={currentWeek}
+                userName={userName}
+                userPhone={userPhone}
+                userTelegram={userTelegram}
+                onDateChange={handleDateChange}
+                onWeekChange={handleWeekChange}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+              />
+            )}
+          </SearchParamsHandler>
+
+          {error && <div className="text-red-500 mt-2 text-center">{error}</div>}
+          {success && <div className="text-white mt-2 text-center">Дякуємо! Ви записані. Ми зв&apos;яжемося з вами найближчим часом.</div>}
+        </div>
       </div>
     </div>
-              </div>
   );
 };
 

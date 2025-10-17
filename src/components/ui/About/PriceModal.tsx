@@ -6,7 +6,7 @@ interface PriceModalProps {
 }
 
 const PriceModal = ({ onClose }: PriceModalProps) => {
-  const [selectedTab, setSelectedTab] = useState(1); // Стан для вибору вкладки
+  const [selectedTab, setSelectedTab] = useState(1);
 
   const handleTabChange = (tab: number) => {
     setSelectedTab(tab);
@@ -25,7 +25,6 @@ const PriceModal = ({ onClose }: PriceModalProps) => {
           </button>
         </div>
 
-        {/* Кнопки вкладок */}
         <div className="flex w-full bg-gray-200 relative mb-4 max-w-1100 mx-auto">
           <button
             onClick={() => handleTabChange(1)}
@@ -44,29 +43,112 @@ const PriceModal = ({ onClose }: PriceModalProps) => {
           />
         </div>
 
-        {/* Контент вкладки */}
         {selectedTab === 1 && (
           <div className='flex flex-col mx-10'>
 
             <div className='flex flex-row justify-between items-center'>
-              <p>Курс групових занять (3 місяці)</p>
+              <div className='flex flex-col'>
+                <p className='font-bold'>Курс групових занять<br /> (12 тижнів / до 48 занять)<br /></p>
+                <p className='text-sm mt-2'>Заняття тривають по дві години та проводяться
+                  4 рази на тиждень.</p>
+                <span className='text-gray-400 text-sm mt-2'>Знижка діє при покупці курсу
+                  в день
+                  пробного майстер-класу*</span>
+              </div>
+
               <div>
                 <p className='font-bold line-through text-gray-400'>15 000 грн</p>
                 <p className='font-bold'>10 000 грн</p>
               </div>
             </div>
 
-            <div>
-              <p>Знижка діє при покупці курсу<br />
-              в день пробного майстер-класу*</p>
+            <div className='w-full h-[1px] bg-gray-200 mt-2'></div>
 
-              <p className='mt-2'>Завжди пропонуємо додаткові знижки для <span className='font-bold'>військових*</span></p>
+
+            <div className='flex flex-row justify-between items-center mt-2'>
+              <div className='flex flex-col'>
+                <p className='font-bold'>Місяць групових занять<br /> (4 тижні / до 16 занять)<br /></p>
+                <p className='text-sm mt-2'>Заняття тривають по дві години та проводяться
+                  4 рази на тиждень.</p>
+                <span className='text-gray-400 text-sm mt-2'>Знижка діє при покупці курсу
+                  в день
+                  пробного майстер-класу*</span>
+              </div>
+
+              <div>
+                <p className='font-bold line-through text-gray-400'>5 000 грн</p>
+                <p className='font-bold'>3 300 грн</p>
+              </div>
             </div>
+
+            <div className='w-full h-[1px] bg-gray-200 mt-2'></div>
+            <div className='flex flex-row justify-between items-center'>
+              <p className='mt-2 font-bold'>Завжди пропонуємо додаткові знижки для військових</p>
+              <p className='font-bold'>від 10%</p>
+            </div>
+
+            <div className='w-full h-[1px] bg-gray-200 mt-2'></div>
+
+            <div className='flex flex-row justify-between items-center'>
+              <p className='mt-2'>Протягом курсу проводимо тематичні квартирники та виступи.</p>
+            </div>
+            
           </div>
         )}
         {selectedTab === 2 && (
-          <div>
-            <p>Тут можна додати інформацію про додаткові опції...</p>
+          <div className='mx-10 flex flex-col'>
+
+            <p className='font-bold'>Вокальний майстер:</p>
+
+            <div className='flex flex-row justify-between mt-2'>
+              <p>1 година індивідуального заняття</p>
+              <p className='font-bold'>1 500 грн</p>
+            </div>
+
+            <div className='flex flex-row justify-between mt-2'>
+              <p>Абонемент на 5 індивідуальних занять</p>
+              <p className='font-bold'>7 000 грн</p>
+            </div>
+
+
+            <div className='flex flex-row justify-between mt-2'>
+              <p>Абонемент на 10 індивідуальних занять</p>
+              <p className='font-bold'>10 000 грн</p>
+            </div>
+
+            <div className='w-full h-[1px] bg-gray-200 mt-2'></div>
+
+            <p className='font-bold mt-2'>Звичайний викладач:</p>
+
+            <div className='flex flex-row justify-between mt-2'>
+              <p>1 година індивідуального заняття</p>
+              <p className='font-bold'>1 000 грн</p>
+            </div>
+
+            <div className='flex flex-row justify-between mt-2'>
+              <p>Абонемент на 5 індивідуальних занять</p>
+              <p className='font-bold'>4 500 грн</p>
+            </div>
+
+
+            <div className='flex flex-row justify-between mt-2'>
+              <p>Абонемент на 10 індивідуальних занять</p>
+              <p className='font-bold'>7 000 грн</p>
+            </div>
+
+            <div className='w-full h-[1px] bg-gray-200 mt-2'></div>
+
+            <div className='flex flex-row justify-between items-center'>
+              <p className='mt-2 font-bold'>Завжди пропонуємо додаткові знижки для військових.</p>
+              <p className='font-bold'>від 10%</p>
+            </div>
+
+            <div className='w-full h-[1px] bg-gray-200 mt-2'></div>
+
+            <div className='flex flex-row justify-between items-center'>
+              <p className='mt-2'>Зручний для вас час та тривалість (одна або дві години) занять ви обираєте самостійно з викладачем.</p>
+            </div>
+
           </div>
         )}
       </div>
