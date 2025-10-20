@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TabButton from './TabButton';
 import FreeMasterClassTab from './FreeMasterClassTab';
 import HowMasterClassWorksTab from './HowMasterClassWorksTab';
@@ -14,7 +14,7 @@ const MasterC = () => {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [currentWeek, setCurrentWeek] = useState<number>(0);
   const [userName, setUserName] = useState<string>('');
-  const [userPhone, setUserPhone] = useState<string>('');
+  const [userPhone, setUserPhone] = useState<string>('+380');
   const [userTelegram, setUserTelegram] = useState<string>('');
   const [section, setSection] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null); 
@@ -36,7 +36,12 @@ const MasterC = () => {
     if (name === 'user_name') {
       setUserName(value);
     } else if (name === 'user_phone') {
-      setUserPhone(value);
+      const digits = value.replace(/\D/g, '').slice(0, 12);
+      let formattedValue = '+380';
+      if (digits.length > 3) {
+        formattedValue += digits.slice(3);
+      }
+      setUserPhone(formattedValue);
     } else if (name === 'user_telegram') {
       setUserTelegram(value);
     }
@@ -71,6 +76,12 @@ const MasterC = () => {
       return;
     }
 
+    if (userPhone.length < 13) {
+      setError('Будь ласка, введіть повний номер телефону (+380 XX XXX XX XX).');
+      setSuccess(false);
+      return;
+    }
+
     const selectedDateObj = new Date(selectedDate);
     const day = selectedDateObj.getDay();
     const daySlots = allowedSlots[day] || [];
@@ -97,7 +108,7 @@ const MasterC = () => {
       setError(null);
 
       setUserName('');
-      setUserPhone('');
+      setUserPhone('+380');
       setUserTelegram('');
       setSelectedDate(null);
     } catch (error) {
@@ -106,6 +117,15 @@ const MasterC = () => {
       setSuccess(false);
     }
   };
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   return (
     <div className='pb-20 pt-45'>

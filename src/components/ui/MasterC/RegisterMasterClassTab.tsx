@@ -81,7 +81,7 @@ const RegisterMasterClassTab = ({
           const daySlots = allowedSlots[day] || [];
 
           return (
-            <div key={index} className="flex flex-col gap-1">
+            <div key={index} className="flex flex-col ">
               <button
                 onClick={() => onDateChange(formattedDate)}
                 className={`${DATE_BUTTON_BASE_STYLE} ${
@@ -94,11 +94,12 @@ const RegisterMasterClassTab = ({
                 {dayName}, {formatDate(date)}
               </button>
               {!isDisabled && daySlots.length > 0 && (
-                <div className="flex flex-row gap-1 w-full">
+                <div className="flex flex-row  w-full">
                   {daySlots.map((time, timeIndex) => (
                     <div
                       key={timeIndex}
-                      className={`${DATE_BUTTON_BASE_STYLE} flex-1 bg-gray-500 text-white text-center`}
+                      onClick={() => onDateChange(formattedDate)}
+                      className={`${DATE_BUTTON_BASE_STYLE} flex-1 bg-[#ff00be]/60 text-white text-center cursor-pointer hover:bg-[#ff00be]/80 transition-colors`}
                     >
                       {time}
                     </div>
@@ -130,7 +131,7 @@ const RegisterMasterClassTab = ({
         id="user_phone"
         value={userPhone}
         onChange={onChange}
-        placeholder="Номер телефону"
+        placeholder="+380 XX XXX XX XX"
         className={INPUT_STYLE}
         required
       />
