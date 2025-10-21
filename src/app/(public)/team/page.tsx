@@ -1,66 +1,146 @@
-"use client";
+import React, { useCallback, useEffect, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+const teamMembers = [
+  { name: "МАКСИМ БОНДАР", image: "/max.jpg" },
+  { name: "НІКА ОХТЕНЬ", image: "/nikaaa.jpg" },
+  { name: "КОСТЯ ЦАРЕНКОВ", image: "/kost.png" },
+  { name: "НАСТЯ ЧЕРНЕЦЬ", image: "/nasti.jpg" },
+  { name: "ІРА НЕХАЄНКО", image: "/ira.png" },
+];
+
+interface TeamMember {
+  name: string;
+  image: string;
+}
+
+interface ArticleProps {
+  data: TeamMember;
+}
+
+const Article: React.FC<ArticleProps> = ({ data }) => {
+  const { image, name } = data;
+
+  return (
+    <figure className="group relative flex-shrink-0 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-105">
+      <div 
+        className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-center p-4 rounded-full"
+        style={{
+          filter: "drop-shadow(0 0 50px rgba(255, 0, 190, 0.7)) drop-shadow(0 0 20px rgba(255, 0, 190, 0.5))",
+        }}
+      >
+        <h3 className="text-lg uppercase font-normal opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 letter-spacing-wide mb-1 text-center">
+          {name}
+        </h3>
+      </div>
+      <img src={image} alt={name} className="w-[280px] h-[280px] rounded-full object-cover" />
+    </figure>
+  );
+};
+
 
 const Team = () => {
-  const teamMembers = [
-    { name: "МАКСИМ БОНДАР", image: "/max.jpg" },
-    { name: "НІКА ОХТЕНЬ", image: "/nikaaa.jpg" },
-    { name: "КОСТЯ ЦАРЕНКОВ", image: "/kost.png" },
-    { name: "НАСТЯ ЧЕРНЕЦЬ", image: "/nasti.jpg" },
-    { name: "ІРА НЕХАЄНКО", image: "/ira.png" },
-  ];
+  const [isMobile, setIsMobile] = useState(false);
+  const MOBILE_BREAKPOINT = 900; 
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : teamMembers.length - 3));
-  };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev < teamMembers.length - 3 ? prev + 1 : 0));
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: isMobile ? 'center' : 'start', 
+    loop: true,
+    slidesToScroll: 1,
+    containScroll: 'trimSnaps',
+    dragFree: false,
+  });
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  const itemWidth = 280;
+  const gap = 16;
+  
+  const visibleItems = isMobile ? 1 : 3; 
+  
+  const visibleAreaWidth = itemWidth * visibleItems + gap * (visibleItems - 1);
+
+  const slideClass = isMobile ? `flex-[0_0_100%]` : `flex-[0_0_${itemWidth}px]`;
 
   return (
     <div className="w-full h-full">
-      <div className="max-w-[1040px] w-full flex flex-col pt-[60px] pb-[140px] mx-auto">
+      <div className="max-w-[1040px] w-full flex flex-col pt-[60px] pb-[140px] mx-auto px-4 sm:px-6 md:px-4"> 
         <h1 className="text-white inline-block font-extrabold text-4xl text-center mb-8 z-1">
           Наша команда
         </h1>
-        <div className="relative">
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white rounded-full hover:bg-[#ff00be] transition duration-300 z-10"
+        <div className="relative w-full flex justify-center">
+          <div 
+            className="overflow-hidden" 
+            ref={emblaRef}
+            style={{ 
+              width: isMobile ? 'calc(280px)' : `${visibleAreaWidth}px`, 
+            }}
           >
-           <ChevronLeft />
-          </button>
-          <div className="flex flex-row justify-center items-center">
-            {teamMembers
-              .slice(currentIndex, currentIndex + 3)
-              .map((member, index) => (
-                <div key={index} className="mx-2">
-                  <div
-                    className="relative"
-                    style={{
-                      filter: "drop-shadow(0 0 50px rgba(255, 0, 190, 0.7)) drop-shadow(0 0 20px rgba(255, 0, 190, 0.5))",
-                    }}
+            <div 
+              className="flex gap-4"
+              style={{ 
+                height: '280px' 
+              }}
+            >
+              {teamMembers.map((member, index) => {
+                const isLast = index === teamMembers.length - 1;
+                
+                const lastItemSpacingClass = isLast ? 'mr-4' : '';
+
+                return (
+                  <div 
+                    key={index} 
+                    className={`${slideClass} ${lastItemSpacingClass}`}
                   >
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="h-[280px] w-[280px] rounded-full object-cover"
-                    />
+                    <div className="flex justify-center items-center h-full w-full">
+                       <Article data={member} />
+                    </div>
                   </div>
-                  <p className="w-[280px] text-white pt-3 text-center font-bold">
-                    {member.name}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
+            </div>
           </div>
+          
           <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white p-2 rounded-full hover:bg-[#ff00be] transition duration-300 z-10"
+            onClick={scrollPrev}
+            className={`
+              absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white rounded-full 
+              hover:bg-[#ff00be] transition duration-300 z-20 bg-black/50
+              
+              /* Мобільні стилі (за замовчуванням): кнопки всередині */
+              -translate-x-1/2 
+              
+              /* Десктопні стилі (від 900px) */
+              ${!isMobile ? '-ml-10 translate-x-0' : ''}
+            `}
+          >
+            <ChevronLeft />
+          </button>
+          
+          <button
+            onClick={scrollNext}
+            className={`
+              absolute right-0 top-1/2 transform -translate-y-1/2 p-2 text-white rounded-full 
+              hover:bg-[#ff00be] transition duration-300 z-20 bg-black/50
+              
+              /* Мобільні стилі (за замовчуванням): кнопки всередині */
+              translate-x-1/2 
+              
+              /* Десктопні стилі (від 900px) */
+              ${!isMobile ? '-mr-10 translate-x-0' : ''}
+            `}
           >
             <ChevronRight />
           </button>
