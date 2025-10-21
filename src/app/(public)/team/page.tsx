@@ -25,8 +25,8 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
   const { image, name } = data;
 
   return (
-    <figure className="group relative flex-shrink-0 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-105">
-      <div 
+    <figure className="group relative cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-105">
+      <div
         className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-center p-4 rounded-full"
         style={{
           filter: "drop-shadow(0 0 50px rgba(255, 0, 190, 0.7)) drop-shadow(0 0 20px rgba(255, 0, 190, 0.5))",
@@ -44,7 +44,7 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
 
 const Team = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const MOBILE_BREAKPOINT = 900; 
+  const MOBILE_BREAKPOINT = 900;
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -57,7 +57,7 @@ const Team = () => {
   }, []);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: isMobile ? 'center' : 'start', 
+    align: isMobile ? 'center' : 'start',
     loop: true,
     slidesToScroll: 1,
     containScroll: 'trimSnaps',
@@ -69,80 +69,79 @@ const Team = () => {
 
   const itemWidth = 280;
   const gap = 16;
-  
-  const visibleItems = isMobile ? 1 : 3; 
-  
+
+  const visibleItems = isMobile ? 1 : 3;
+
   const visibleAreaWidth = itemWidth * visibleItems + gap * (visibleItems - 1);
 
-  const slideClass = isMobile ? `flex-[0_0_100%]` : `flex-[0_0_${itemWidth}px]`;
 
   return (
     <div className="w-full h-full">
-      <div className="max-w-[1040px] w-full flex flex-col pt-[60px] pb-[140px] mx-auto px-4 sm:px-6 md:px-4"> 
+      <div className="max-w-[1040px] w-full flex flex-col pt-[60px] pb-[140px] mx-auto px-4 sm:px-6 md:px-4">
         <h1 className="text-white inline-block font-extrabold text-4xl text-center mb-8 z-1">
           Наша команда
         </h1>
         <div className="relative w-full flex justify-center">
-          <div 
-            className="overflow-hidden" 
+          <div
+            className="overflow-hidden"
             ref={emblaRef}
-            style={{ 
-              width: isMobile ? 'calc(280px)' : `${visibleAreaWidth}px`, 
+            style={{
+              width: isMobile ? 'calc(280px)' : `${visibleAreaWidth}px`,
             }}
           >
-            <div 
+            <div
               className="flex gap-4"
-              style={{ 
-                height: '280px' 
+              style={{
+                height: '280px'
               }}
             >
               {teamMembers.map((member, index) => {
                 const isLast = index === teamMembers.length - 1;
-                
+
                 const lastItemSpacingClass = isLast ? 'mr-4' : '';
 
+                const currentSlideClass = isMobile
+                  ? 'flex-[0_0_100%]'
+                  : 'flex-none w-[280px]';
+
                 return (
-                  <div 
-                    key={index} 
-                    className={`${slideClass} ${lastItemSpacingClass}`}
+                  <div
+                    key={index}
+                    className={`${currentSlideClass} ${lastItemSpacingClass}`}
                   >
                     <div className="flex justify-center items-center h-full w-full">
-                       <Article data={member} />
+                      <Article data={member} />
                     </div>
                   </div>
                 );
               })}
             </div>
           </div>
-          
+
           <button
             onClick={scrollPrev}
             className={`
-              absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white rounded-full 
-              hover:bg-[#ff00be] transition duration-300 z-20 bg-black/50
-              
-              /* Мобільні стилі (за замовчуванням): кнопки всередині */
-              -translate-x-1/2 
-              
-              /* Десктопні стилі (від 900px) */
-              ${!isMobile ? '-ml-10 translate-x-0' : ''}
-            `}
+              absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white rounded-full 
+              hover:bg-[#ff00be] transition duration-300 z-20 bg-black/50
+              
+              -translate-x-1/2 
+              
+              ${!isMobile ? '-ml-10 translate-x-0' : ''}
+            `}
           >
             <ChevronLeft />
           </button>
-          
+
           <button
             onClick={scrollNext}
             className={`
-              absolute right-0 top-1/2 transform -translate-y-1/2 p-2 text-white rounded-full 
-              hover:bg-[#ff00be] transition duration-300 z-20 bg-black/50
-              
-              /* Мобільні стилі (за замовчуванням): кнопки всередині */
-              translate-x-1/2 
-              
-              /* Десктопні стилі (від 900px) */
-              ${!isMobile ? '-mr-10 translate-x-0' : ''}
-            `}
+              absolute right-0 top-1/2 transform -translate-y-1/2 p-2 text-white rounded-full 
+              hover:bg-[#ff00be] transition duration-300 z-20 bg-black/50
+              
+              translate-x-1/2 
+              
+              ${!isMobile ? '-mr-10 translate-x-0' : ''}
+            `}
           >
             <ChevronRight />
           </button>
