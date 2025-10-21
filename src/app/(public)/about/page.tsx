@@ -11,7 +11,7 @@ import {
 
 const About = () => {
   return (
-    <div className="w-full pt-20 pb-20">
+    <div className="w-full pt-20">
       <div className="bg-gradient-to-b from-transparent to-[#ff00be]/65 w-full flex flex-col mx-auto pb-5">
         <SectionCard {...sections[0]} />
         <div className={SECTION_CONTAINER_STYLE} />

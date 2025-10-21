@@ -137,7 +137,7 @@ const HomePage = () => {
         <About />
       </div>
 
-      <div id="events" ref={makeSectionRef('events')} style={{ marginTop: '1rem' }}>
+      <div id="events" ref={makeSectionRef('events')}>
         <Events />
       </div>
 
