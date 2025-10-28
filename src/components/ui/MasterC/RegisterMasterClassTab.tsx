@@ -28,7 +28,7 @@ interface RegisterMasterClassTabProps {
   onDateChange: (date: string) => void;
   onWeekChange: (week: number) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (e: React.FormEvent) => void;
+  onSubmit: (e: React.FormEvent) => Promise<void>;
 }
 
 const RegisterMasterClassTab = ({
@@ -53,7 +53,7 @@ const RegisterMasterClassTab = ({
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-2 text-white">
       <div className="flex items-center justify-between w-full">
-        <label htmlFor="date">Виберіть дату:</label>
+        <label htmlFor="date">Оберіть дату:</label>
         <div className="flex">
           <button
             onClick={() => onWeekChange(currentWeek - 1)}
