@@ -25,6 +25,7 @@ interface RegisterMasterClassTabProps {
   userName: string;
   userPhone: string;
   userTelegram: string;
+  isLoading: boolean;
   onDateChange: (date: string) => void;
   onWeekChange: (week: number) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -37,6 +38,7 @@ const RegisterMasterClassTab = ({
   userName,
   userPhone,
   userTelegram,
+  isLoading,
   onDateChange,
   onWeekChange,
   onChange,
@@ -147,8 +149,12 @@ const RegisterMasterClassTab = ({
         required
       />
 
-      <button type="submit" className={SUBMIT_BUTTON_STYLE}>
-        Записатися
+      <button 
+        type="submit" 
+        disabled={isLoading}
+        className={`${SUBMIT_BUTTON_STYLE} ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+      >
+        {isLoading ? 'Записуємо...' : 'Записатися'}
       </button>
     </form>
   );

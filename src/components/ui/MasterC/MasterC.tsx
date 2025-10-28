@@ -19,6 +19,7 @@ const MasterC = () => {
   const [section, setSection] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null); 
   const [success, setSuccess] = useState<boolean>(false); 
+  const [isLoading, setIsLoading] = useState(false);
 
   emailjs.init('IZRqHsU2-TVjoCSN4');
 
@@ -82,6 +83,9 @@ const MasterC = () => {
       return;
     }
 
+    setIsLoading(true);
+    setError(null);
+
     const selectedDateObj = new Date(selectedDate);
     const day = selectedDateObj.getDay();
     const daySlots = allowedSlots[day] || [];
@@ -105,7 +109,6 @@ const MasterC = () => {
 
       console.log('Email відправлено!', response.status, response.text);
       setSuccess(true);
-      setError(null);
 
       setUserName('');
       setUserPhone('+380');
@@ -115,6 +118,8 @@ const MasterC = () => {
       console.error('Помилка відправки email:', error);
       setError('Помилка відправки. Спробуйте ще раз або зв’яжіться з нами напряму.');
       setSuccess(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -126,6 +131,15 @@ const MasterC = () => {
       return () => clearTimeout(timer);
     }
   }, [success]);
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   return (
     <div className='pb-20 pt-45'>
@@ -164,6 +178,7 @@ const MasterC = () => {
                 userName={userName}
                 userPhone={userPhone}
                 userTelegram={userTelegram}
+                isLoading={isLoading}
                 onDateChange={handleDateChange}
                 onWeekChange={handleWeekChange}
                 onChange={handleChange}

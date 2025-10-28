@@ -4,12 +4,13 @@ import emailjs from '@emailjs/browser';
 
 const Production = () => {
   const [userName, setUserName] = useState('');
-  const [userPhone, setUserPhone] = useState('+380'); // ЗМІНА: Автоматично '+380'
+  const [userPhone, setUserPhone] = useState('+380');
   const [userTelegram, setUserTelegram] = useState('');
   const [userService, setUserService] = useState('');
   const [userMessage, setUserMessage] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   emailjs.init('IZRqHsU2-TVjoCSN4');
 
@@ -19,7 +20,6 @@ const Production = () => {
     const { name, value } = e.target;
     if (name === 'user_name') setUserName(value);
     else if (name === 'user_phone') {
-      // ЗМІНА: Форматування як у MasterC, з '+380' автоматично
       const digits = value.replace(/\D/g, '').slice(0, 12);
       let formattedValue = '+380';
       if (digits.length > 3) {
@@ -47,6 +47,9 @@ const Production = () => {
       return;
     }
 
+    setIsLoading(true);
+    setError(null);
+
     const templateParams = {
       user_name: userName,
       user_phone: userPhone,
@@ -65,10 +68,9 @@ const Production = () => {
 
       console.log('Email відправлено!', response.status, response.text);
       setSuccess(true);
-      setError(null);
 
       setUserName('');
-      setUserPhone('+380'); // ЗМІНА: Скидання на '+380'
+      setUserPhone('+380');
       setUserTelegram('');
       setUserService('');
       setUserMessage('');
@@ -76,6 +78,8 @@ const Production = () => {
       console.error('Помилка відправки email:', error);
       setError('Помилка відправки. Спробуйте ще раз або зв’яжіться з нами напряму.');
       setSuccess(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -179,7 +183,13 @@ const Production = () => {
               placeholder="Додаткова інформація (опціонально)"
               className="outline-none border border-white/10 p-2 mb-4 bg-black w-full h-24 resize-none"
             />
-            <button type="submit" className="bg-[#ff00be] text-white p-3 w-full cursor-pointer">Відправити</button> {/* ЗМІНА: + cursor-pointer */}
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className={`p-3 w-full text-white ${isLoading ? 'bg-gray-500 cursor-not-allowed' : 'bg-[#ff00be] cursor-pointer'}`}
+            >
+              {isLoading ? 'Відправляємо...' : 'Відправити'}
+            </button>
             {error && <div className="text-red-500 mt-2 text-center">{error}</div>}
             {success && <div className="text-white mt-2 text-center">Дякуємо! Ми зв&apos;яжемося з вами найближчим часом.</div>}
           </form>
