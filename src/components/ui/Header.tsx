@@ -55,7 +55,6 @@ export function Header() {
                 >
                   {tab.name}
                 </a>
-                {/* {tab.index !== tabs.length && <div className="bg-white/20 h-5 rounded-full w-0.5 mx-1"></div>} */}
               </div>
             </li>
           ))}

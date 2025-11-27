@@ -10,6 +10,7 @@ import Team from "../team/page";
 import Presents from "../presents/page";
 import Portfolio from "../portfolio/page";
 import Production from "../production/page";
+import News from '../news/page';
 
 const HomePage = () => {
   const router = useRouter();
@@ -157,7 +158,9 @@ const HomePage = () => {
         <Production />
       </div>
 
-      <div id="news" ref={makeSectionRef('news')} style={{ marginTop: '1rem' }}></div>
+      <div id="news" ref={makeSectionRef('news')}>
+        <News />
+      </div>
     </>
   );
 };

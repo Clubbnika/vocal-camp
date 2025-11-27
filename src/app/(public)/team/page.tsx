@@ -67,7 +67,7 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
   const handleArrowClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setShowOverlay(true);
-    setIsExpanded(false); // Початково показуємо скорочений текст
+    setIsExpanded(false);
   };
 
   const handleMouseEnter = () => {
@@ -99,14 +99,13 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
           </div>
           <button 
             onClick={handleArrowClick}
-            className="text-white hover:text-[#ff00be] p-1 hover:bg-black/50"
+            className="text-white hover:text-[#ff00be] p-1 hover:bg-black/50 lg:hidden"
           >
             <ChevronRight size={20} />
           </button>
         </div>
       </div>
 
-      {/* Full overlay */}
       <div
         className={`absolute inset-0 bg-white transition-opacity duration-300 z-10 flex flex-col items-center justify-center p-4 ${overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
       >
@@ -185,7 +184,7 @@ const Team = () => {
             <div
               className="flex gap-4 items-start"
               style={{
-                minHeight: '300px' // Дозволяємо розширення
+                minHeight: '300px'
               }}
             >
               {teamMembers.map((member, index) => {
