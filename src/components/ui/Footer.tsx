@@ -35,14 +35,14 @@ const Footer = () => {
 
           <div className="flex-1 flex flex-col gap-2">
             <h1 className="text-[#ff00be] text-lg">Соцмережі</h1>
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-2">
               <a 
                 href="https://www.instagram.com/vocal_camp/?hl=en" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#ff00be] transition"
               >
-                <Instagram size={28} />
+                <Instagram size={20} />
               </a>
               <a 
                 href="https://www.instagram.com/voice.camp.studio/?hl=en" 
@@ -50,7 +50,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#ff00be] transition"
               >
-                <Instagram size={28} />
+                <Instagram size={20} />
               </a>
               <a 
                 href="https://www.youtube.com/channel/UCuER665J5QsFU7uupEG1fBw" 
@@ -58,7 +58,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#ff00be] transition"
               >
-                <Youtube size={28} />
+                <Youtube size={20} />
               </a>
               <a 
                 href="https://t.me/nicaaok" 
@@ -66,7 +66,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#ff00be] transition"
               >
-                <Send size={28} />
+                <Send size={20} />
               </a>
             </div>
           </div>
