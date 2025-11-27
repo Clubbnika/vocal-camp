@@ -116,7 +116,7 @@ const HomePage = () => {
       <div id="home" ref={makeSectionRef('home')} className="relative min-h-screen">
         <div className="flex justify-center items-center h-screen">
           <div className="max-w-[1040px] w-full flex flex-col items-center p-4 mt-[-50px]">
-            <img src="/logo.png" alt="Vocal Camp logo" className="w-[300px] mb-4" />
+            <img src="/logo.webp" alt="Vocal Camp logo" className="w-[300px] mb-4" />
             <button
               onClick={handleButtonClick}
               className="inline-block text-black bg-white px-4 py-2 rounded-3xl mb-4 font-bold hover:bg-[#ff00be] transition duration-300"

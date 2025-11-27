@@ -3,7 +3,7 @@ import { HEADING_STYLE, HEADING_STYLE_THIRD } from "@/components/ui/About/styles
 export const sections = [
   {
     heading: "Для кого підходить наш курс групових занять?",
-    imageSrc: "/35.jpg",
+    imageSrc: "/35.webp",
     imageAlt: "Photo of the vocal teacher",
     imageClass: "h-85 object-cover mr-5 pt-5 pl-5",
     text: `- Для тих, хто хоче по декілька годин на тиждень весело проводити час в компанії цікавих людей; <br />
@@ -18,7 +18,7 @@ export const sections = [
   },
   {
     heading: "Про курс",
-    imageSrc: "/8.jpg",
+    imageSrc: "/8.webp",
     imageAlt: "Photo of the vocal teacher",
     imageClass: "h-78 object-cover mt-5 w-90 ml-5",
     text: `На заняттях ми робимо вправи, які не тільки допоможуть вам заспівати, а і розслабитись та почати почувати себе комфортно.
@@ -34,7 +34,7 @@ export const sections = [
   },
   {
     heading: "Індивідуальні заняття",
-    imageSrc: "/nikaind.jpg",
+    imageSrc: "/nikaind.webp",
     imageAlt: "Photo of the girl with microphone",
     imageClass: "h-78 object-cover mt-5 w-90 ml-5 mr-5",
     text: `- Для тих, хто хоче по декілька годин на тиждень весело проводити час в компанії цікавих людей; <br />
@@ -51,17 +51,17 @@ export const sections = [
 
 export const stories = [
   {
-    imageSrc: "/ed.jpg",
+    imageSrc: "/ed.webp",
     imageAlt: "Photo of Ed Sheeran",
     text: "Ед Ширан зараз збирає стадіони, б’є рекорди стрімінгів та «рве» YouTube, але на початку кар’єри британець грав на вулиці. Романтики в цьому було небагато — Ед буквально був бездомним, і протягом майже трьох років жив за рахунок таких виступів.",
   },
   {
-    imageSrc: "/billie.jpg",
+    imageSrc: "/billie.webp",
     imageAlt: "Photo of Billie Eilish",
     text: "Біллі Айліш стала відомою в 13 років, записавши свій перший хіт, буквально сидячи на ліжку в батьківському домі — і її єдиним партнером у світі музики залишається її брат.",
   },
   {
-    imageSrc: "/eminem.jpg",
+    imageSrc: "/eminem.webp",
     imageAlt: "Photo of Eminem",
     text: "Емінем. Відомий усьому світу репер народився у бідній родині, мав проблеми з однолітками, приймав участь у постійних бійках, після однієї з них навіть перебував у комі, працював різноробочим, кухарем та офіціантом.",
   },

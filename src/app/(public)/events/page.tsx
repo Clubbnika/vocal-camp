@@ -11,17 +11,17 @@ const TEXT_STYLE = 'min-w-70 max-w-70 text-black bg-white min-h-20 p-5 text-cent
 
 const eventsData = [
   {
-    imageSrc: '/jekis.png',
+    imageSrc: '/jekis.webp',
     alt: '',
     text: 'Виступи в закладах.',
   },
   {
-    imageSrc: '/kv.jpg',
+    imageSrc: '/kv.webp',
     alt: '',
     text: 'Тематичні квартирники в нашій студії.',
   },
   {
-    imageSrc: '/street.png',
+    imageSrc: '/street.webp',
     alt: '',
     text: 'Заняття та виступи під відкритим небом.',
   },

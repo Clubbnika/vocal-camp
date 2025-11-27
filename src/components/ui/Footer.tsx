@@ -33,7 +33,7 @@ const Footer = () => {
 
         <div className="border-b border-white/15 mt-4"></div>
         <img
-          src="/logotext.png"
+          src="/logotext.webp"
           alt="Vocal Camp logo"
           className="h-12 w-auto mx-auto mt-4"
         />

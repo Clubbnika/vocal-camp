@@ -113,7 +113,7 @@ export default function RootLayout({ children }: PropsWithChildren<unknown>) {
           }
         `}</style>
       </head>
-      <body className="relative min-h-screen bg-[url('/phone.png')] bg-cover bg-center bg-repeat bg-fixed">
+      <body className="relative min-h-screen bg-[url('/phone.webp')] bg-cover bg-center bg-repeat bg-fixed">
         <TabProvider>
           <RootLayoutContent>
             {children}

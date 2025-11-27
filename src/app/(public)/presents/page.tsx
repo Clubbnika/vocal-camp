@@ -19,7 +19,7 @@ const Presents = () => {
 
           <div className="bg-white h-100 w-100 flex flex-col">
             <img
-              src="/present.png"
+              src="/present.webp"
               alt="Photo of the vocal teacher"
               className="h-85 object-cover mr-5 pt-5 pl-5"
             />
