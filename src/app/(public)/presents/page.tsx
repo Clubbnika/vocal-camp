@@ -1,33 +1,34 @@
 const Presents = () => {
   return (
     <div className="w-full h-full">
-      <div className="max-w-[1040px] w-ful flex flex-col pt-[60px] pb-45 mx-auto">
-        <div className="flex md:flex-row flex-col gap-10 mx-auto">
-          <div className="bg-black h-100 w-100 flex flex-col">
-            <h1 className="text-4xl text-white font-extrabold pt-4 ml-10 mb-3">
+      <div className="max-w-[1040px] w-full pt-[60px] pb-45 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex md:flex-row flex-col gap-10 mx-auto w-full justify-center">
+          
+          <div className="bg-black p-6 flex flex-col justify-start max-w-md">
+            <h1 className="text-4xl text-white font-extrabold mb-5">
               Подарункові сертифікати
             </h1>
-            <p className="bg-white w-80 h-auto ml-10 mb-5 p-4 text-[17px]">
+            <p className="bg-white p-4 mb-6 text-[17px]">
               Ви можете зробити чудовий подарунок для близької людини - допомогти
               відкрити її творчі здібності та втілити в життя її мрію.
               Придбайте подарунковий сертифікат на заняття з вокальної майстерності.
             </p>
-            <button className="w-80 text-center bg-[#ff00be] pt-1 pb-1 text-black ml-10 hover:bg-white transition duration-300">
+            <button className="w-full text-center bg-[#ff00be] pt-3 pb-3 text-black font-semibold hover:bg-white transition duration-300">
               Придбати сертифікат
             </button>
-            </div>
+          </div>
 
-          <div className="bg-white h-100 w-100 flex flex-col">
+          <div className="bg-white p-5 flex flex-col items-center justify-center max-w-md">
             <img
               src="/present.webp"
-              alt="Photo of the vocal teacher"
-              className="h-85 object-cover mr-5 pt-5 pl-5"
+              alt="Подарунковий сертифікат Вокал Кемп"
+              className="max-h-85 object-cover w-full"
             />
           </div>
-          
         </div>
       </div>
     </div>
   );
 };
+
 export default Presents;

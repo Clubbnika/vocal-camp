@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const CONTAINER_STYLE = 'w-full h-full bg-gradient-to-b to-transparent from-black/70';
+const CONTAINER_STYLE = 'w-full h-full bg-gradient-to-b to-transparent from-black/70 px-4';
 const INNER_CONTAINER_STYLE = 'max-w-[1040px] w-full flex-col flex pt-35 pb-35 mx-auto';
 const HEADING_STYLE = 'text-white inline-block font-extrabold text-4xl text-center mb-8 pt-5';
 const EVENTS_ROW_STYLE = 'flex flex-col md:flex-row justify-center gap-4 md:gap-10 mb-8';

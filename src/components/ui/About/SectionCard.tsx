@@ -2,8 +2,6 @@ import {
   MOTION_PROPS,
   SECTION_CONTAINER_STYLE,
   CARD_CONTAINER_STYLE,
-  IMAGE_CARD_STYLE,
-  TEXT_CARD_STYLE,
   HEADING_STYLE,
   PARAGRAPH_STYLE,
   PARAGRAPH_STYLE_INVERTED,
@@ -65,17 +63,17 @@ const SectionCard = ({
     <motion.div {...MOTION_PROPS} className={`${SECTION_CONTAINER_STYLE} ${marginTop || ''} ${paddingBottom || ''}`}>
       {imageFirst ? (
         <>
-          <div className={`${CARD_CONTAINER_STYLE} ${imageBgClass} ${extraClass || ''}`}>
-            <img src={imageSrc} alt={imageAlt} className={imageClass} />
+          <div className={`${CARD_CONTAINER_STYLE} ${imageBgClass} ${extraClass || ''} overflow-hidden`}>
+            <img src={imageSrc} alt={imageAlt} className={`${imageClass} w-full md:w-auto`} />
           </div>
-          <div className={`${CARD_CONTAINER_STYLE} ${textBgClass}`}>
-            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mb-2 ml-10 pt-4`}>{heading}</h1>
-            <p className={`${paragraphStyle} ml-10 mb-4`} dangerouslySetInnerHTML={{ __html: text }} />
+          <div className={`${CARD_CONTAINER_STYLE} ${textBgClass} p-4 md:p-0`}>
+            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mb-2 pt-4 md:ml-10 md:pt-4`}>{heading}</h1>
+            <p className={`${paragraphStyle} mb-4`} dangerouslySetInnerHTML={{ __html: text }} />
             {hasButton && (
               <button
                 onClick={openModal}
                 id="openModalBtn"
-                className={`${buttonClasses} ml-10`}
+                className={`${buttonClasses} md:ml-10`}
               >
                 {buttonText}
               </button>
@@ -84,20 +82,20 @@ const SectionCard = ({
         </>
       ) : (
         <>
-          <div className={`${CARD_CONTAINER_STYLE} ${textBgClass} mr-5`}>
-            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mr-4 pt-4 mb-2`}>{heading}</h1>
-            <p className={`${paragraphStyle} mr-4 mb-4`} dangerouslySetInnerHTML={{ __html: text }} />
+          <div className={`${CARD_CONTAINER_STYLE} ${textBgClass} p-4 md:p-0 md:mr-5`}>
+            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mb-2 pt-4 md:mr-4 md:pt-4`}>{heading}</h1>
+            <p className={`${paragraphStyle} mb-4`} dangerouslySetInnerHTML={{ __html: text }} />
             {hasButton && (
               <button
-                onClick={openModal} 
-                className={`${buttonClasses} mr-4`}
+                onClick={openModal}
+                className={`${buttonClasses} md:mr-4`}
               >
                 {buttonText}
               </button>
             )}
           </div>
-          <div className={`${CARD_CONTAINER_STYLE} ${imageBgClass}`}>
-            <img src={imageSrc} alt={imageAlt} className={imageClass} />
+          <div className={`${CARD_CONTAINER_STYLE} ${imageBgClass} overflow-hidden`}>
+            <img src={imageSrc} alt={imageAlt} className={`${imageClass} w-full md:w-auto`} />
           </div>
         </>
       )}
