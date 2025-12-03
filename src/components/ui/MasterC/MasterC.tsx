@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import TabButton from './TabButton';
 import FreeMasterClassTab from './FreeMasterClassTab';
@@ -20,6 +21,12 @@ const MasterC = () => {
   const [error, setError] = useState<string | null>(null); 
   const [success, setSuccess] = useState<boolean>(false); 
   const [isLoading, setIsLoading] = useState(false);
+
+  const [isAgreed, setIsAgreed] = useState(false);
+
+    const handlePrivacyChange = (isAgreed: boolean) => {
+        setIsAgreed(isAgreed);
+    };
 
   emailjs.init('IZRqHsU2-TVjoCSN4');
 
@@ -183,6 +190,9 @@ const MasterC = () => {
                 onWeekChange={handleWeekChange}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
+                isPrivacyAgreed={isAgreed}
+            onPrivacyChange={handlePrivacyChange}
+            privacyPolicyLink="https://docs.google.com/document/d/18z3c6NfLZGCvJuph00BNMBetVq7joLbfTlFVfYWqz8Y/edit?usp=sharing"
               />
             )}
           </SearchParamsHandler>

@@ -1,3 +1,5 @@
+'use client';
+
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import {
@@ -18,6 +20,7 @@ import {
   formatDate,
   isDayAvailable,
 } from './utils';
+import PrivacyCheckbox from '../PrivacyCheckBox'; 
 
 interface RegisterMasterClassTabProps {
   selectedDate: string | null;
@@ -30,7 +33,11 @@ interface RegisterMasterClassTabProps {
   onWeekChange: (week: number) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent) => Promise<void>;
+  isPrivacyAgreed: boolean;
+  onPrivacyChange: (isAgreed: boolean) => void;
+  privacyPolicyLink: string;
 }
+
 
 const RegisterMasterClassTab = ({
   selectedDate,
@@ -43,17 +50,38 @@ const RegisterMasterClassTab = ({
   onWeekChange,
   onChange,
   onSubmit,
+  isPrivacyAgreed,
+  onPrivacyChange,
+  privacyPolicyLink,
 }: RegisterMasterClassTabProps) => {
   const nextWeekDates = getWeekDates(currentWeek);
+
+  const [warningMessage, setWarningMessage] = useState<string | null>(null);
 
   const isPrevWeekAvailable = (): boolean => {
     const today = new Date();
     const selectedWeekDate = getWeekDates(currentWeek)[0];
     return today.getTime() > selectedWeekDate.getTime();
   };
+  
+  const handleSubmitWrapper = async (e: React.FormEvent) => {
+      e.preventDefault();
+
+      if (!isPrivacyAgreed) {
+          setWarningMessage('Будь ласка, погодьтеся з Політикою конфіденційності.');
+
+          setTimeout(() => {
+              setWarningMessage(null);
+          }, 3000);
+          return;
+      }
+
+      await onSubmit(e);
+  };
+
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-2 text-white">
+    <form onSubmit={handleSubmitWrapper} className="flex flex-col gap-2 text-white">
       <div className="flex items-center justify-between w-full">
         <label htmlFor="date">Оберіть дату:</label>
         <div className="flex">
@@ -67,6 +95,7 @@ const RegisterMasterClassTab = ({
           <button
             onClick={() => onWeekChange(currentWeek + 1)}
             className={`${ARROW_BUTTON_STYLE} ml-2`}
+            disabled={isLoading}
           >
             <ChevronRight />
           </button>
@@ -96,7 +125,7 @@ const RegisterMasterClassTab = ({
                 {dayName}, {formatDate(date)}
               </button>
               {!isDisabled && daySlots.length > 0 && (
-                <div className="flex flex-row  w-full">
+                <div className="flex flex-row w-full">
                   {daySlots.map((time, timeIndex) => (
                     <div
                       key={timeIndex}
@@ -148,10 +177,22 @@ const RegisterMasterClassTab = ({
         className={INPUT_STYLE}
         required
       />
+    
+      <PrivacyCheckbox 
+          isChecked={isPrivacyAgreed}
+          onCheckChange={onPrivacyChange}
+          privacyLink={privacyPolicyLink} 
+      />
 
+      {warningMessage && (
+          <div className="bg-red-600 text-white text-sm font-semibold text-center p-2 rounded-md transition-opacity">
+              {warningMessage}
+          </div>
+      )}
+      
       <button 
         type="submit" 
-        disabled={isLoading}
+        disabled={isLoading} 
         className={`${SUBMIT_BUTTON_STYLE} ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         {isLoading ? 'Записуємо...' : 'Записатися'}

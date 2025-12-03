@@ -49,9 +49,6 @@ const Footer = () => {
 </div>
 
           <div className="flex-1 flex flex-col gap-2">
-            {/* <h1 className="text-[#ff00be] text-lg flex items-center gap-2">
-              Про академію
-            </h1> */}
             <h1 className="text-[#ff00be] text-lg flex items-center gap-2">
               Локація
             </h1>

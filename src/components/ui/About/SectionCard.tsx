@@ -1,3 +1,5 @@
+'use client';
+
 import {
   MOTION_PROPS,
   SECTION_CONTAINER_STYLE,

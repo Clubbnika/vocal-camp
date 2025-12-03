@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import PrivacyCheckbox from '../../../components/ui/PrivacyCheckBox';
 
 const Production = () => {
   const [userName, setUserName] = useState('');
@@ -11,6 +12,8 @@ const Production = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
+  
+  const [isPrivacyAgreed, setIsPrivacyAgreed] = useState(false);
 
   emailjs.init('IZRqHsU2-TVjoCSN4');
 
@@ -31,12 +34,17 @@ const Production = () => {
     else if (name === 'user_service') setUserService(value);
     else if (name === 'user_message') setUserMessage(value);
   };
+  
+  const handlePrivacyChange = (isAgreed: boolean) => {
+      setIsPrivacyAgreed(isAgreed);
+  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!userName.trim() || !userPhone.trim() || !userTelegram.trim() || !userService.trim()) {
-      setError('Будь ласка, заповніть всі поля.');
+      setError('Будь ласка, заповніть всі обов\'язкові поля.');
       setSuccess(false);
       return;
     }
@@ -46,6 +54,13 @@ const Production = () => {
       setSuccess(false);
       return;
     }
+    
+    if (!isPrivacyAgreed) {
+        setError('Будь ласка, погодьтеся з Політикою конфіденційності.');
+        setSuccess(false);
+        return;
+    }
+
 
     setIsLoading(true);
     setError(null);
@@ -74,6 +89,7 @@ const Production = () => {
       setUserTelegram('');
       setUserService('');
       setUserMessage('');
+      setIsPrivacyAgreed(false);
     } catch (error) {
       console.error('Помилка відправки email:', error);
       setError('Помилка відправки. Спробуйте ще раз або зв’яжіться з нами напряму.');
@@ -183,10 +199,17 @@ const Production = () => {
               placeholder="Додаткова інформація (опціонально)"
               className="outline-none border border-white/10 p-2 mb-4 bg-black w-full h-24 resize-none"
             />
+            
+            <PrivacyCheckbox
+                isChecked={isPrivacyAgreed}
+                onCheckChange={handlePrivacyChange}
+                privacyLink="https://docs.google.com/document/d/18z3c6NfLZGCvJuph00BNMBetVq7joLbfTlFVfYWqz8Y/edit?usp=sharing" 
+            />
+            
             <button 
               type="submit" 
               disabled={isLoading}
-              className={`p-3 w-full text-white ${isLoading ? 'bg-gray-500 cursor-not-allowed' : 'bg-[#ff00be] cursor-pointer'}`}
+              className={`p-3 w-full text-white ${isLoading ? 'bg-gray-500 cursor-not-allowed' : 'bg-[#ff00be] cursor-pointer'} mt-4`}
             >
               {isLoading ? 'Відправляємо...' : 'Відправити'}
             </button>
