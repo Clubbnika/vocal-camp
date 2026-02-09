@@ -93,7 +93,6 @@ const PriceModal = ({ onClose }: PriceModalProps) => {
               <p className="text-2xl sm:text-3xl font-black text-[#ff00be]">%</p>
             </div>
 
-            {/* Деталі */}
             <div className="py-4 sm:py-6 px-2 sm:px-5 text-xs sm:text-sm text-gray-400"> {/* ← зменшено py-7 → py-6 */}
               <ul className="space-y-1.5"> {/* ← зменшено space-y-2 → 1.5 */}
                 <li><strong>Розклад групових занять:</strong></li>
