@@ -1,6 +1,15 @@
+'use client';
+
+import { useState } from 'react';
 import { Instagram, Send, Youtube, MapPin } from "lucide-react";
+import Link from 'next/link';
+import PolicyModal from './Policy';
+import OfferModal from './Oferta';
 
 const Footer = () => {
+  const [showPolicy, setShowPolicy] = useState(false);
+  const [showOffer, setShowOffer] = useState(false);
+
   return (
     <>
       <div className="mt-4"></div>
@@ -30,23 +39,23 @@ const Footer = () => {
             >
               Історія академії
             </a>
-              <a 
-                href="https://docs.google.com/document/d/1-8y011j20Rcexd-UFLGJpaFbvtPhvf_-HHiclcO3FvE/edit?usp=sharing" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-white/60 hover:text-[#ff00be] transition flex flex-row text-[12px] gap-2"
-              >
+
+            <button
+              type="button"
+              onClick={() => setShowOffer(true)}
+              className="text-white/60 hover:text-[#ff00be] transition flex flex-row text-[12px] gap-2 bg-transparent border-none cursor-pointer p-0 text-left"
+            >
               Публічний договір оферти
-              </a>
-              <a 
-                href="/privacy-policy" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-white/60 hover:text-[#ff00be] transition flex flex-row text-[12px] gap-2"
-              >
-                Політика конфіденційності
-              </a>
-</div>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setShowPolicy(true)}
+              className="text-white/60 hover:text-[#ff00be] transition flex flex-row text-[12px] gap-2 bg-transparent border-none cursor-pointer p-0 text-left"
+            >
+              Політика конфіденційності
+            </button>
+          </div>
 
           <div className="flex-1 flex flex-col gap-2">
             <h1 className="text-[#ff00be] text-lg flex items-center gap-2">
@@ -108,23 +117,22 @@ const Footer = () => {
             </div>
           </div>
 
-
-
-
-
-
-
-
-
         </div>
 
-
-
-              <div className="border-b border-white/10 mt-4"></div>
+        <div className="border-b border-white/10 mt-4"></div>
         <p className="text-white/60 text-[12px] text-center py-4">
-        © 2023 Vocal Camp. Усі права захищені.
+          © 2026 Vocal Camp. Усі права захищені.
         </p>
       </div>
+
+      <PolicyModal
+        isOpen={showPolicy}
+        onClose={() => setShowPolicy(false)}
+      />
+      <OfferModal
+        isOpen={showOffer}
+        onClose={() => setShowOffer(false)}
+      />
     </>
   );
 };
