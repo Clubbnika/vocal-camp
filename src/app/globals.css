@@ -61,4 +61,27 @@ body {
   animation: moving-left 100s linear infinite;
 }
 
+@layer utilities {
+  .custom-scrollbar {
+    scrollbar-width: thin;                /* Firefox */
+    scrollbar-color: #61616120 #ffffff;   /* Firefox */
+  }
 
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;                           /* ширина */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f3f4f6;                  /* трек */
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #ff00be80;
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #ff00be;
+  }
+}
