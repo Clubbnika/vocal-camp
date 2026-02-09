@@ -39,7 +39,7 @@ const Footer = () => {
               Публічний договір оферти
               </a>
               <a 
-                href="https://docs.google.com/document/d/18z3c6NfLZGCvJuph00BNMBetVq7joLbfTlFVfYWqz8Y/edit?usp=sharing" 
+                href="/privacy-policy" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white/60 hover:text-[#ff00be] transition flex flex-row text-[12px] gap-2"
