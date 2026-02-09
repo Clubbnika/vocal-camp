@@ -2,7 +2,7 @@ import {
   TAB_BUTTON_BASE_STYLE,
   TAB_BUTTON_ACTIVE_STYLE,
   TAB_BUTTON_INACTIVE_STYLE,
-} from "@/components/ui/MasterC/styles"
+} from "@/components/MasterC/styles"
 
 interface TabButtonProps {
   label: string;

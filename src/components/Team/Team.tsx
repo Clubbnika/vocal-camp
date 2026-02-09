@@ -6,34 +6,22 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const teamMembers = [
   { 
-    name: "МАКСИМ БОНДАР", 
-    image: "/max.webp",
-    role: "Співвласник школи, вокальний майстер, звукорежисер",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    "name": "МАКСИМ БОНДАР", 
+    "image": "/max.webp",
+    "role": "Співвласник школи, вокальний майстер, звукорежисер",
+    "description": "<p>Максим розпочав свій творчий шлях ще у віці 8 років і з того часу не зупиняється.</p><p>У підлітковому віці він брав участь в багатьох творчих та музичних проектах, включаючи \"Х-Фактор\", \"Битва хорів\" та \"Топ модель по українськи\".</p><p>В 13 років Максим вперше написав свою власну пісню, а вже з 15 років почав продавати пісні артистам.</p><p>Максим співпрацював з такими артистами, як Ірина Білик, Руслана, Злата Огнєвіч, Вася Демчук, Wellboy, Нікіта Ломакін, Нікіта Кисельов, Софіно Лоретті, Гарік Кричевський та інші.</p><p>Максим об'їздив більше 10 європейських країн, виступаючи в музичних шоу.</p><p>Крім того, він здобув музичну освіту в музичній школі імені Глієра та закінчив Київську муніципальну академію естрадного та циркового мистецтв за спеціальністю \"естрадний вокал\".</p><p>Але головне, що Максим має більше 7 років досвіду викладання та більше 1000 задоволених та вдячних учнів. Він працює за власною авторською методикою викладання, яка допомагає кожному з наших учнів зрозуміти, що співати може кожен!</p>"
   },
   { 
     name: "НІКА ОХТЕНЬ", 
     image: "/nikaaa.webp",
-    role: "Співвласниця школи, голова відділу по роботі з клієнтами, керуюча",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  },
+    role: "Співвласниця школи, голова відділу по роботі з клієнтами, керуюча і просто Нікуся",
+    description: "<p>Ніка стала однією з тих, хто заклав основи академії з самого початку. Вона повністю займалась створенням і відкриттям, розробила айдентику та сайт для академії, а також продовжує працювати над підтримкою її активного розвитку.</p><p>Як керуюча академією, Ніка займається впровадженням заходів, конкурсів та інтерактивів, завжди на зв'язку з учнями і підтримує їх у всіх питаннях. Вона — не просто організатор, а й надійний друг. Ніка, також, є ученицею нашої школи. Колись вона надихнулася нашим викладачем Максимом та його творчістю, він підкорив її серце своєю пристрастю до музики. З часом вони стали не лише колегами, а й партнерами, створюючи разом прекрасне та ділячись цією жагою до музики з усіма.</p><p>Ніка — це людина, яка вміє поєднувати творчий підхід до роботи з реальними результатами.</p>"
+  }, 
   { 
     name: "КОСТЯ ЦАРЕНКОВ", 
     image: "/kost.png",
     role: "Піарник, звукорежисер",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
-  },
-  { 
-    name: "НАСТЯ ЧЕРНЕЦЬ", 
-    image: "/nasti.jpg",
-    role: "Викладач вокалу",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-  },
-  { 
-    name: "ІРА НЕХАЄНКО", 
-    image: "/ira.png",
-    role: "Викладач вокалу",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    description: "<p>Костя — перлина нашого Vocal Camp. Він із першого дня існування нашої академії, активно допомагав у створенні та просуванні нашого творчого ком'юніті.</p> <p>Костя є одним із перших учнів нашого вокального майстра. Він прийшов до нас як людина, яка ніколи не займалась музикою, але вже зараз він випускає власні треки, які набирають сотні тисяч прослуховувань. Завдяки його праці та таланту, він вже має багато випущених пісень та мільйони переглядів у TikTok.</p> <p>Крім того, Костя пише мінусовки, просуває пісні для інших наших учнів, активно допомагає з рекламою та випуском треків на майданчики. Він не просто найкращий друг та учень, а ще й звукорежисер та невід’ємна частина нашого продакшну.</p>"
   },
 ];
 
@@ -83,7 +71,7 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
 
   const overlayVisible = showOverlay || isHovered;
 
-  const figureHeight = isExpanded ? 'h-[400px]' : 'h-[280px]';
+  const figureHeight = isExpanded ? 'h-[700px]' : 'h-[280px]';
 
   return (
     <figure 
@@ -115,24 +103,23 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
         <p className={`text-sm font-medium transition-all duration-300 mb-2 text-center text-black ${overlayVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0'}`}>
           {role}
         </p>
-        <div className={`text-xs transition-all duration-300 text-center text-black/60 leading-relaxed max-w-[240px] ${overlayVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0'}`}>
-          {isExpanded ? description : shortDescription}
-          {description.length > maxLength && (
-            <button
-              onClick={toggleExpanded}
-              className="ml-1 text-[#ff00be] hover:underline focus:outline-none"
-            >
-              {isExpanded ? 'менше' : 'більше'}
-            </button>
-          )}
-        </div>
+        <div className={`text-xs transition-all duration-300 text-center text-black/60 leading-relaxed max-w-[240px] ${overlayVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0'}`}
+          dangerouslySetInnerHTML={{ __html: isExpanded ? description : shortDescription }}
+        />
+        {description.length > maxLength && (
+          <button
+            onClick={toggleExpanded}
+            className="ml-1 text-[#ff00be] hover:underline focus:outline-none"
+          >
+            {isExpanded ? 'менше' : 'більше'}
+          </button>
+        )}
       </div>
       <img src={image} alt={name} className="w-[280px] object-cover transition-all duration-300" 
            style={{ height: isExpanded ? '400px' : '280px' }} />
     </figure>
   );
 };
-
 
 const Team = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -165,7 +152,6 @@ const Team = () => {
   const visibleItems = isMobile ? 1 : 3;
 
   const visibleAreaWidth = itemWidth * visibleItems + gap * (visibleItems - 1);
-
 
   return (
     <div className="w-full h-full overflow-x-hidden">

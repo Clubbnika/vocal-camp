@@ -3,7 +3,7 @@ import {
   STORY_TEXT_STYLE,
   STORY_IMAGE_STYLE,
 }
-  from '@/components/ui/About/styles'
+  from '@/components/About/styles'
 
 interface StoryCardProps {
   imageSrc: string;

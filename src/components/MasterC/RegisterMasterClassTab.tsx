@@ -20,7 +20,7 @@ import {
   formatDate,
   isDayAvailable,
 } from './utils';
-import PrivacyCheckbox from '../PrivacyCheckBox'; 
+import PrivacyCheckbox from '../ui/PrivacyCheckBox'; 
 
 interface RegisterMasterClassTabProps {
   selectedDate: string | null;

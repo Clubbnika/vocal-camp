@@ -1,4 +1,4 @@
-import { HEADING_STYLE, HEADING_STYLE_THIRD } from "@/components/ui/About/styles"
+import { HEADING_STYLE, HEADING_STYLE_THIRD } from "@/components/About/styles"
 
 export const sections = [
   {

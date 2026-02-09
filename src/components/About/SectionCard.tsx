@@ -8,7 +8,7 @@ import {
   PARAGRAPH_STYLE,
   PARAGRAPH_STYLE_INVERTED,
   BUTTON_STYLE,
-} from '@/components/ui/About/styles'
+} from '@/components/About/styles'
 import { motion } from "framer-motion";
 import { useState } from 'react';
 import PriceModal from './PriceModal';

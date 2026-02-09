@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import PrivacyCheckbox from '../../../components/ui/PrivacyCheckBox';
+import PrivacyCheckbox from '../ui/PrivacyCheckBox';
 
 const Production = () => {
   const [userName, setUserName] = useState('');

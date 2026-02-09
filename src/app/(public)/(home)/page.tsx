@@ -2,15 +2,15 @@
 import { Suspense, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
-import AboutVC from "@/components/ui/AboutVC";
-import AboutMC from "@/components/ui/MasterC/MasterC";
-import About from "../about/page";
-import Events from "../events/page";
-import Team from "../team/page";
-import Presents from "../presents/page";
-import Portfolio from "../portfolio/page";
-import Production from "../production/page";
-import News from '../news/page';
+import AboutVC from "@/components/About/AboutVC";
+import AboutMC from "@/components/MasterC/MasterC";
+import About from "../../../components/About/About";
+import Events from "../../../components/Events/Events";
+import Team from "../../../components/Team/Team";
+import Presents from "../../../components/Presents/Presents";
+import Portfolio from "../../../components/Portfolio/Portfolio";
+import Production from "../../../components/Production/Production";
+import News from '../../../components/News/News';
 
 const HomePage = () => {
   const router = useRouter();

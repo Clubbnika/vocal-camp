@@ -1,13 +1,13 @@
 'use client';
-import { MovingRows } from "@/components/ui/About/MovingRows";
-import SectionCard from "@/components/ui/About/SectionCard";
-import StoryCard from "@/components/ui/About/StoryCard";
-import { sections, stories } from "@/components/ui/About/data";
+import { MovingRows } from "@/components/About/MovingRows";
+import SectionCard from "@/components/About/SectionCard";
+import StoryCard from "@/components/About/StoryCard";
+import { sections, stories } from "@/components/About/data";
 import {
   SECTION_CONTAINER_STYLE,
   MAIN_HEADING_STYLE,
   MOTION_PROPS,
-} from "@/components/ui/About/styles";
+} from "@/components/About/styles";
 
 const About = () => {
   return (
