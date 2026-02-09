@@ -8,14 +8,19 @@ const Presents = () => {
             <h1 className="text-4xl text-white font-extrabold mb-5">
               Подарункові сертифікати
             </h1>
-            <p className="bg-white p-4 mb-6 text-[17px]">
+            <div className="bg-white p-4 mb-6 text-[17px]">
               Ви можете зробити чудовий подарунок для близької людини - допомогти
               відкрити її творчі здібності та втілити в життя її мрію.
               Придбайте подарунковий сертифікат на заняття з вокальної майстерності.
-            </p>
-            <button className="w-full text-center bg-[#ff00be] pt-3 pb-3 text-black font-semibold hover:bg-white transition duration-300">
-              Придбати сертифікат
-            </button>
+<p>Для замовлення сертифікату зв&apos;яжіться з нами будь ласка через <a 
+    href="https://www.instagram.com/voice.camp.studio/?hl=en" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="text-[#ff00be] hover:underline font-medium transition underline"
+  >
+    Instagram.
+  </a></p>
+            </div>
           </div>
 
           <div className="bg-white p-5 flex flex-col items-center justify-center max-w-md">

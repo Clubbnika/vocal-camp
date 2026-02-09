@@ -54,21 +54,39 @@ const Portfolio = () => {
 
         <div className="flex flex-col md:flex-row w-full mx-auto justify-center pr-4 pl-4 gap-4">
           <iframe
-            src="https://www.youtube.com/embed/KXN4D68wydA?si=p8ds9pRr0gd0yadx"
+            src="https://www.youtube.com/embed/oEq1VTqhWAI?si=qwBBfbw-yiy4iHVq"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="w-full md:w-1/3 h-[200px] mr-4"
           />
           <iframe
-            src="https://www.youtube.com/embed/0IyHCxieY7A?si=5LlZSAbK065NLgb5"
+            src="//www.youtube.com/embed/wdGEk00_WYI?si=asOduNQkVGQxjx5N"
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full md:w-1/3 h-[200px] mr-4"
+          />
+        </div>
+
+      <h1 className="text-white font-extrabold text-4xl text-center mb-4 pt-4">Мюзикли, поставлені нашими учнями</h1>
+        <div className="flex flex-col md:flex-row w-full mx-auto justify-center pr-4 pl-4 gap-4">
+          <iframe
+            src="//www.youtube.com/embed/ORQGY3T4AS8?si=Ajjm95udjowxwfDt"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="w-full md:w-1/3 h-[200px] mr-4"
           />
           <iframe
-            src="https://www.youtube.com/embed/paVsNqfrIa8?si=w-hRcdcb4SfvHR1r"
+            src="//www.youtube.com/embed/5uVoLDR-oK4?si=MLb7YLTBmns67rwA"
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full md:w-1/3 h-[200px] mr-4"
+          />
+          <iframe
+            src="//www.youtube.com/embed/rJtoYWTs3Ns?si=JetgljDo9Q7w3ain"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
