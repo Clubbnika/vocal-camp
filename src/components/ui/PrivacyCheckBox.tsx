@@ -32,7 +32,7 @@ const PrivacyCheckbox: React.FC<PrivacyCheckboxProps> = ({
         />
       </div>
       <div className="ml-3 text-sm">
-        <label htmlFor="privacy-checkbox" className="font-medium text-white">
+        <label htmlFor="privacy-checkbox" className="font-medium text-white text-xs md:text-sm">
           Я даю згоду на обробку моїх персональних даних згідно з
           <a
             href={privacyLink} 

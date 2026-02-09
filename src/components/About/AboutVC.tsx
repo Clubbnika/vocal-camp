@@ -13,13 +13,13 @@ const AboutVC: FC = () => {
     <div className="bg-black w-full" style={{ marginTop: '1rem' }}>
       <div className="max-w-[1040px] w-full flex flex-col p-4 pt-8 pb-8 mx-auto items-center">
         <div
-          className="text-[#ff00be] text-5xl font-extrabold"
+          className="text-[#ff00be] text-3xl font-extrabold sm:text-5xl"
           style={{ ...commonStyles, marginBottom: '1rem', textShadow: '0 0px 20px rgba(0, 0, 0, 1)' }}
         >
           Vocal Camp - більше ніж уроки вокалу
         </div>
         <p
-          className="text-white text-[16px]"
+          className="text-white text-[14px] sm:text-[16px]"
           style={commonStyles}
         >
           Навчання у нас - це: <br />

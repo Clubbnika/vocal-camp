@@ -160,7 +160,7 @@ const MasterC = () => {
                 onClick={() => setSelectedTab(1)}
               />
               <TabButton
-                label="Як проходить майстер-клас?"
+                label="Формат?"
                 isActive={selectedTab === 2}
                 onClick={() => setSelectedTab(2)}
               />

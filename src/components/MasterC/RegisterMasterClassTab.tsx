@@ -82,7 +82,7 @@ const RegisterMasterClassTab = ({
 
   return (
     <form onSubmit={handleSubmitWrapper} className="flex flex-col gap-2 text-white">
-      <div className="flex items-center justify-between w-full">
+      <div className="flex items-center justify-between w-full text-sm">
         <label htmlFor="date">Оберіть дату:</label>
         <div className="flex">
           <button
@@ -90,19 +90,19 @@ const RegisterMasterClassTab = ({
             className={`${ARROW_BUTTON_STYLE} ${currentWeek <= 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={currentWeek <= 0}
           >
-            <ChevronLeft />
+            <ChevronLeft size={18}/>
           </button>
           <button
             onClick={() => onWeekChange(currentWeek + 1)}
             className={`${ARROW_BUTTON_STYLE} ml-2`}
             disabled={isLoading}
           >
-            <ChevronRight />
+            <ChevronRight size={18}/>
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-7 gap-2 mb-4">
+      <div className="grid grid-cols-2 md:grid-cols-7 gap-2 mb-4 md:text-sm text-xs">
         {nextWeekDates.map((date, index) => {
           const day = date.getDay();
           const formattedDate = date.toISOString().split('T')[0];
