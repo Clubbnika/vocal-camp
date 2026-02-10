@@ -15,7 +15,7 @@ const TabButton = ({ label, isActive, onClick }: TabButtonProps) => (
     onClick={onClick}
     className={`${TAB_BUTTON_BASE_STYLE} ${isActive ? TAB_BUTTON_ACTIVE_STYLE : TAB_BUTTON_INACTIVE_STYLE}`}
     style={{
-fontSize: 'clamp(0.65rem, 2vw, 0.875rem)',
+fontSize: 'clamp(0.875rem, 2vw, 1rem)',
       background: 'transparent',
       padding: '0rem',
       paddingBottom: '1rem',

@@ -2,11 +2,18 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
+import { ShoppingCart } from 'lucide-react';
+import { useCartStore } from '@/store/cartStore';
+import CartModal from '../CartModal/CartModal';
 
 export default function BurgerMenu() {
   const { activeTab, setActiveTab } = useTabContext();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const getItemCount = useCartStore((state) => state.getItemCount);
+  const itemCount = getItemCount();
 
   const tabs = [
     { name: 'Головна', href: '#home', index: 1 },
@@ -35,11 +42,11 @@ export default function BurgerMenu() {
 
   const handleTabClick = (index: number, href: string) => {
     setActiveTab(index);
-    setIsMenuOpen(false); // Закриваємо меню перед прокручуванням
+    setIsMenuOpen(false);
     setTimeout(() => {
-      scrollToSection(href); // Прокручуємо після закриття меню
+      scrollToSection(href);
       updateURL(href);
-    }, 300); // Затримка відповідає анімації закриття меню (0.3s)
+    }, 300);
   };
 
   const toggleMenu = () => {
@@ -47,7 +54,7 @@ export default function BurgerMenu() {
   };
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen || isCartOpen) {
       document.body.style.overflow = 'hidden';
       document.body.style.height = '100vh';
       document.body.style.position = 'fixed';
@@ -58,7 +65,7 @@ export default function BurgerMenu() {
       document.body.style.position = 'static';
       document.body.style.width = 'auto';
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isCartOpen]);
 
   return (
     <>
@@ -92,9 +99,15 @@ export default function BurgerMenu() {
           z-index: 1000;
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          padding-left: 20px;
+          justify-content: space-between; /* Змінено для розміщення іконок */
+          padding: 0 20px;
           box-sizing: border-box;
+        }
+
+        .header-left-group {
+          display: flex;
+          align-items: center;
+          gap: 10px; /* Відстань між бургером та кошиком */
         }
 
         .burger-container {
@@ -107,6 +120,39 @@ export default function BurgerMenu() {
           user-select: none;
           -webkit-tap-highlight-color: transparent;
           z-index: 1001;
+        }
+
+        .cart-icon-container {
+          position: relative;
+          cursor: pointer;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          transition: transform 0.2s ease;
+        }
+
+        .cart-icon-container:active {
+          transform: scale(0.9);
+        }
+
+        .cart-badge {
+          position: absolute;
+          top: 2px;
+          right: 2px;
+          background: #ff00be;
+          color: white;
+          font-size: 10px;
+          font-weight: bold;
+          border-radius: 50%;
+          min-width: 16px;
+          height: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 4px;
         }
 
         #burger {
@@ -202,11 +248,11 @@ export default function BurgerMenu() {
         }
 
         li.menu-item a:hover {
-          color: #ff00be; /* Рожевий лише при наведенні */
+          color: #ff00be;
         }
 
         .menu-item.active a {
-          color: #FFF; /* Активна вкладка залишається білою */
+          color: #FFF;
         }
 
         .menu-opened .burger-container #burger .bar {
@@ -225,7 +271,7 @@ export default function BurgerMenu() {
 
         @media(max-width: 600px) {
           .burger-header {
-            padding-left: 10px;
+            padding: 0 10px;
           }
 
           ul.menu {
@@ -236,13 +282,25 @@ export default function BurgerMenu() {
 
       <div className={`burger-menu ${isMenuOpen ? 'menu-opened' : ''}`}>
         <div className="burger-header">
-          <div className="burger-container" onClick={toggleMenu}>
-            <div id="burger">
-              <span className="bar topBar"></span>
-              <span className="bar btmBar"></span>
+          <div className="header-left-group">
+            <div className="burger-container" onClick={toggleMenu}>
+              <div id="burger">
+                <span className="bar topBar"></span>
+                <span className="bar btmBar"></span>
+              </div>
+            </div>
+
+            <div className="cart-icon-container" onClick={() => setIsCartOpen(true)}>
+              <ShoppingCart size={22} />
+              {itemCount > 0 && (
+                <span className="cart-badge">{itemCount}</span>
+              )}
             </div>
           </div>
         </div>
+
+        <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+
         <div className="menu-overlay">
           <ul className="menu">
             {tabs.map((tab, index) => (

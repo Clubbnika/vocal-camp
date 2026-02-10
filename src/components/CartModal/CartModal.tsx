@@ -1,6 +1,7 @@
 'use client';
 import { X, ShoppingCart, Trash2 } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
+import { submitPaymentForm } from '@/lib/cartUtils';
 
 interface CartModalProps {
   isOpen: boolean;
@@ -20,56 +21,21 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
     try {
       const response = await fetch('/api/wayforpay/create-payment', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items, total }),
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
       const result = await response.json();
 
       if (!result.success) {
         alert('Помилка підготовки платежу: ' + (result.error || 'Спробуйте пізніше'));
-        console.error('WayForPay API error:', result.error);
         return;
       }
 
-      const { data } = result as {
-        success: boolean;
-        data: Record<string, string | string[]>;
-      };
-
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = 'https://secure.wayforpay.com/pay';
-
-      const addField = (name: string, value: string | string[]) => {
-        const values = Array.isArray(value) ? value : [value];
-        values.forEach((val) => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = name;
-          input.value = val;
-          form.appendChild(input);
-        });
-      };
-
-      Object.entries(data).forEach(([key, value]) => {
-        addField(key, value);
-      });
-
-      addField('language', 'UA');
-
-      document.body.appendChild(form);
-      form.submit();
-
-      setTimeout(() => {
-        document.body.removeChild(form);
-      }, 500);
+      submitPaymentForm(result.data);
+      
     } catch (error) {
       console.error('Помилка при створенні платежу:', error);
       alert('Не вдалося підключитися до WayForPay. Перевірте інтернет або спробуйте пізніше.');

@@ -5,10 +5,10 @@ const Presents = () => {
         <div className="flex md:flex-row flex-col gap-10 mx-auto w-full justify-center">
           
           <div className="bg-black p-6 flex flex-col justify-start max-w-md">
-            <h1 className="text-4xl text-white font-extrabold mb-5">
+            <h1 className="text-3xl text-white font-extrabold mb-5">
               Подарункові сертифікати
             </h1>
-            <div className="bg-white p-4 mb-6 text-[17px]">
+            <div className="bg-white p-4 mb-6 text-base">
               Ви можете зробити чудовий подарунок для близької людини - допомогти
               відкрити її творчі здібності та втілити в життя її мрію.
               Придбайте подарунковий сертифікат на заняття з вокальної майстерності.

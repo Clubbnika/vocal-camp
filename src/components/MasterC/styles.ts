@@ -1,8 +1,8 @@
 export const TAB_BUTTON_BASE_STYLE = 'text-white text-lg font-semibold px-5 py-2 flex-1 cursor-pointer';
 export const TAB_BUTTON_ACTIVE_STYLE = 'bg-[#ff00be]/50';
 export const TAB_BUTTON_INACTIVE_STYLE = 'bg-transparent';
-export const TEXT_STYLE = 'text-white/70 text-lg';
-export const INPUT_STYLE = 'p-2 border-1 border-white/10 bg-black';
+export const TEXT_STYLE = 'text-white/70 text-base sm:text-lg';
+export const INPUT_STYLE = 'p-2 border-1 border-white/10 bg-black text-sm md:text-base';
 export const DATE_BUTTON_BASE_STYLE = 'p-2 text-center cursor-pointer';
 export const DATE_BUTTON_AVAILABLE_STYLE = 'bg-[#ff00be] text-white';
 export const DATE_BUTTON_AVAILABLE_STYLE_CLICKED = 'border-3 border-white';

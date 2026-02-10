@@ -1,17 +1,21 @@
-// components/Header.tsx або src/components/ui/Header.tsx
 'use client';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
 import { ShoppingCart } from 'lucide-react';
-import { useState } from 'react';
-import CartModal from './CartModal'; // або правильний шлях
+import { useState, useEffect } from 'react';
+import CartModal from '../CartModal/CartModal';
 import { useCartStore } from '@/store/cartStore';
 
 export function Header() {
   const { activeTab, setActiveTab } = useTabContext();
   const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { getItemCount } = useCartStore();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const tabs = [
     { name: 'Головна', href: '#home', index: 1 },
@@ -70,16 +74,14 @@ export function Header() {
               ))}
             </div>
 
-            {/* Іконка кошика */}
             <li className="flex-shrink-0">
               <button
                 onClick={() => setIsCartOpen(true)}
                 className="text-white hover:text-[#ff00be] p-2 rounded-full transition-colors relative"
                 aria-label="Кошик"
-                suppressHydrationWarning // ← це виправляє помилку гідратації
               >
                 <ShoppingCart size={24} />
-                {getItemCount() > 0 && (
+                {mounted && getItemCount() > 0 && (
                   <span className="absolute -top-1 -right-1 bg-[#ff00be] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {getItemCount()}
                   </span>

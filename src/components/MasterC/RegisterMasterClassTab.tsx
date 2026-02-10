@@ -102,7 +102,7 @@ const RegisterMasterClassTab = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-7 gap-2 mb-4 md:text-sm text-xs">
+      <div className="grid grid-cols-2 md:grid-cols-7 gap-2 mb-4 md:text-base text-sm">
         {nextWeekDates.map((date, index) => {
           const day = date.getDay();
           const formattedDate = date.toISOString().split('T')[0];

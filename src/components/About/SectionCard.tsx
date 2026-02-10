@@ -11,7 +11,7 @@ import {
 } from '@/components/About/styles'
 import { motion } from "framer-motion";
 import { useState } from 'react';
-import PriceModal from './PriceModal';
+import PriceModal from '../PriceModal/PriceModal';
 
 interface SectionCardProps {
   heading: string;
