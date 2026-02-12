@@ -27,25 +27,26 @@ const Presents = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="w-full h-full">
+    <div ref={sectionRef} className="w-full h-full bg-black/60 backdrop-blur-sm">
       <div 
         className={`
           max-w-[1040px] w-full pt-[60px] pb-45 mx-auto px-4 sm:px-6 lg:px-8
-          transition-all duration-1000 ease-out
+          transition-all duration-1000 ease-out will-change-opacity will-change-transform
           ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
         `}
       >
         <div 
           className={`
             flex md:flex-row flex-col gap-10 mx-auto w-full justify-center
-            transition-all duration-1000 ease-out
+            transition-all duration-1000 ease-out will-change-opacity will-change-transform
             ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
           `}
         >
+          {/* Ліва частина — текст */}
           <div 
             className={`
-              bg-black p-6 flex flex-col justify-start max-w-md
-              transition-all duration-1000 ease-out
+              bg-black p-6 flex flex-col justify-start max-w-md isolation-isolate
+              transition-all duration-1000 ease-out will-change-opacity will-change-transform
               ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
             `}
             style={{ transitionDelay: '150ms' }}
@@ -53,11 +54,11 @@ const Presents = () => {
             <h1 className="text-3xl text-white font-extrabold mb-5">
               Подарункові сертифікати
             </h1>
-            <div className="bg-white p-4 mb-6 text-base">
+            <div className="bg-white p-4 mb-6 text-base text-black">
               Ви можете зробити чудовий подарунок для близької людини - допомогти
               відкрити її творчі здібності та втілити в життя її мрію.
               Придбайте подарунковий сертифікат на заняття з вокальної майстерності.
-              <p>
+              <p className="mt-3">
                 Для замовлення сертифікату зв&apos;яжіться з нами будь ласка через{' '}
                 <a
                   href="https://www.instagram.com/voice.camp.studio/?hl=en"
@@ -71,10 +72,11 @@ const Presents = () => {
             </div>
           </div>
 
+          {/* Права частина — фото */}
           <div 
             className={`
               bg-white p-5 flex flex-col items-center justify-center max-w-md
-              transition-all duration-1000 ease-out
+              transition-all duration-1000 ease-out will-change-opacity will-change-transform
               ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
             `}
             style={{ transitionDelay: '300ms' }}
