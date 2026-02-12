@@ -38,7 +38,6 @@ interface RegisterMasterClassTabProps {
   privacyPolicyLink: string;
 }
 
-
 const RegisterMasterClassTab = ({
   selectedDate,
   currentWeek,
@@ -65,20 +64,19 @@ const RegisterMasterClassTab = ({
   };
   
   const handleSubmitWrapper = async (e: React.FormEvent) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      if (!isPrivacyAgreed) {
-          setWarningMessage('Будь ласка, погодьтеся з Політикою конфіденційності.');
+    if (!isPrivacyAgreed) {
+      setWarningMessage('Будь ласка, погодьтеся з Політикою конфіденційності.');
 
-          setTimeout(() => {
-              setWarningMessage(null);
-          }, 3000);
-          return;
-      }
+      setTimeout(() => {
+        setWarningMessage(null);
+      }, 3000);
+      return;
+    }
 
-      await onSubmit(e);
+    await onSubmit(e);
   };
-
 
   return (
     <form onSubmit={handleSubmitWrapper} className="flex flex-col gap-2 text-white">
@@ -179,15 +177,14 @@ const RegisterMasterClassTab = ({
       />
     
       <PrivacyCheckbox 
-          isChecked={isPrivacyAgreed}
-          onCheckChange={onPrivacyChange}
-          privacyLink={privacyPolicyLink} 
+        isChecked={isPrivacyAgreed}
+        onCheckChange={onPrivacyChange}
       />
 
       {warningMessage && (
-          <div className="bg-red-600 text-white text-sm font-semibold text-center p-2 rounded-md transition-opacity">
-              {warningMessage}
-          </div>
+        <div className="bg-red-600 text-white text-sm font-semibold text-center p-2 rounded-md transition-opacity">
+          {warningMessage}
+        </div>
       )}
       
       <button 

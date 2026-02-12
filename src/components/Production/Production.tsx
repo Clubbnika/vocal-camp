@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import PrivacyCheckbox from '../ui/PrivacyCheckBox';
@@ -36,9 +37,8 @@ const Production = () => {
   };
   
   const handlePrivacyChange = (isAgreed: boolean) => {
-      setIsPrivacyAgreed(isAgreed);
+    setIsPrivacyAgreed(isAgreed);
   };
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,11 +56,10 @@ const Production = () => {
     }
     
     if (!isPrivacyAgreed) {
-        setError('Будь ласка, погодьтеся з Політикою конфіденційності.');
-        setSuccess(false);
-        return;
+      setError('Будь ласка, погодьтеся з Політикою конфіденційності.');
+      setSuccess(false);
+      return;
     }
-
 
     setIsLoading(true);
     setError(null);
@@ -201,9 +200,8 @@ const Production = () => {
             />
             
             <PrivacyCheckbox
-                isChecked={isPrivacyAgreed}
-                onCheckChange={handlePrivacyChange}
-                privacyLink="https://docs.google.com/document/d/18z3c6NfLZGCvJuph00BNMBetVq7joLbfTlFVfYWqz8Y/edit?usp=sharing" 
+              isChecked={isPrivacyAgreed}
+              onCheckChange={handlePrivacyChange}
             />
             
             <button 
