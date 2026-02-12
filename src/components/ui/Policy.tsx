@@ -19,7 +19,6 @@ export default function PolicyModal({ isOpen, onClose }: PolicyModalProps) {
         className="relative bg-black/95 text-white w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl border border-gray-800/70"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Кнопка закриття */}
         <button
           onClick={onClose}
           className="absolute top-5 right-6 text-4xl text-gray-400 hover:text-[#ff00be] transition-colors z-10 focus:outline-none"
@@ -28,7 +27,6 @@ export default function PolicyModal({ isOpen, onClose }: PolicyModalProps) {
           <X size={32} strokeWidth={2.5} />
         </button>
 
-        {/* Контент */}
         <div className="p-6 md:p-10 lg:p-12">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 text-[#ff00be]">
             ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ VOCAL CAMP

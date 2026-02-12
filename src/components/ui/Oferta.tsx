@@ -187,5 +187,3 @@ export default function OfferModal({ isOpen, onClose }: OfferModalProps) {
     </div>
   );
 }
-
-// gtg

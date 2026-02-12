@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTabContext } from '@/components/ui/TabContext';
@@ -11,6 +12,7 @@ export default function BurgerMenu() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const getItemCount = useCartStore((state) => state.getItemCount);
   const itemCount = getItemCount();
@@ -27,6 +29,10 @@ export default function BurgerMenu() {
     { name: 'Новини', href: '#news', index: 9 },
     { name: 'Контакти', href: '#contacts', index: 10 },
   ];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -99,7 +105,7 @@ export default function BurgerMenu() {
           z-index: 1000;
           display: flex;
           align-items: center;
-          justify-content: space-between; /* Змінено для розміщення іконок */
+          justify-content: space-between;
           padding: 0 20px;
           box-sizing: border-box;
         }
@@ -107,7 +113,7 @@ export default function BurgerMenu() {
         .header-left-group {
           display: flex;
           align-items: center;
-          gap: 10px; /* Відстань між бургером та кошиком */
+          gap: 10px;
         }
 
         .burger-container {
@@ -269,7 +275,7 @@ export default function BurgerMenu() {
           transform: rotate(-45deg);
         }
 
-        @media(max-width: 600px) {
+        @media (max-width: 600px) {
           .burger-header {
             padding: 0 10px;
           }
@@ -290,43 +296,51 @@ export default function BurgerMenu() {
               </div>
             </div>
 
-            <div className="cart-icon-container" onClick={() => setIsCartOpen(true)}>
-              <ShoppingCart size={22} />
-              {itemCount > 0 && (
-                <span className="cart-badge">{itemCount}</span>
-              )}
-            </div>
+            {mounted && (
+              <div className="cart-icon-container" onClick={() => setIsCartOpen(true)}>
+                <ShoppingCart size={22} />
+                {itemCount > 0 && (
+                  <span className="cart-badge">{itemCount}</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
         <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
-        <div className="menu-overlay">
-          <ul className="menu">
-            {tabs.map((tab, index) => (
-              <li
-                key={tab.index}
-                className={`menu-item ${activeTab === tab.index ? 'active' : ''}`}
-                style={{
-                  transitionDelay: isMenuOpen ? `${0.07 * (index + 1) + 0.2}s` : '0s',
-                } as React.CSSProperties}
-              >
-                <a
-                  href={tab.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleTabClick(tab.index, tab.href);
-                  }}
+        {mounted && (
+          <div className="menu-overlay">
+            <ul className="menu">
+              {tabs.map((tab, index) => (
+                <li
+                  key={tab.index}
+                  className={`menu-item ${activeTab === tab.index ? 'active' : ''}`}
                   style={{
-                    transitionDelay: isMenuOpen ? `${0.07 * (index + 1) + 0.2}s` : '0s',
+                    transitionDelay: isMenuOpen
+                      ? `${0.07 * (index + 1) + 0.2}s`
+                      : '0s',
                   } as React.CSSProperties}
                 >
-                  {tab.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+                  <a
+                    href={tab.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleTabClick(tab.index, tab.href);
+                    }}
+                    style={{
+                      transitionDelay: isMenuOpen
+                        ? `${0.07 * (index + 1) + 0.2}s`
+                        : '0s',
+                    } as React.CSSProperties}
+                  >
+                    {tab.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </>
   );

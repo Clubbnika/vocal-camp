@@ -7,5 +7,4 @@ export const PAGES = {
   PORTFOLIO: '/portfolio',
   PRODUCTION: '/production',
   CONTACTS:'/contacts',
-  // PROFILE: (username: string) => `/user/${username}`,
 };

@@ -12,7 +12,7 @@ interface CartStore {
   items: CartItem[];
   addItem: (item: Omit<CartItem, 'quantity'>) => void;
   decreaseItem: (id: string) => void;
-  removeItem: (id: string) => void;          // ← додано
+  removeItem: (id: string) => void;      
   getTotal: () => number;
   getItemCount: () => number;
 }

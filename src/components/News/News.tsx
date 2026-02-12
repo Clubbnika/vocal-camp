@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface NewsItem {
@@ -75,30 +75,66 @@ const newsData: NewsItem[] = [
 ];
 
 const News: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -20% 0px',
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
   return (
-    <div className="min-h-screen py-12 px-4 bg-gradient-to-t from-transparent to-black">
+    <div ref={sectionRef} className="min-h-screen py-12 px-4 bg-gradient-to-t from-transparent to-black">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-white mb-12">
+        <h1 
+          className={`
+            text-4xl font-bold text-center text-white mb-12
+            transition-all duration-1200 ease-out
+            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+          `}
+        >
           Новини
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {newsData.map((news) => (
+          {newsData.map((news, index) => (
             <article
               key={news.id}
-              className="bg-black/80 rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 border border-white/5"
+              className={`
+                bg-black/80 rounded-xl shadow-lg overflow-hidden flex flex-col 
+                hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 
+                border border-white/5
+                transition-all duration-1400 ease-out
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+              `}
+              style={{ transitionDelay: `${index * 250}ms` }}
             >
               <div className="relative overflow-hidden h-56">
                 <img
                   src={news.imageUrl}
                   alt={news.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               </div>
@@ -110,7 +146,13 @@ const News: React.FC = () => {
                   {news.title}
                 </h3>
 
-                <p className={`text-white/70 leading-relaxed text-sm ${expandedId === news.id ? 'whitespace-pre-line' : 'line-clamp-4'}`}>
+                <p 
+                  className={`
+                    text-white/70 leading-relaxed text-sm 
+                    transition-all duration-500
+                    ${expandedId === news.id ? 'line-clamp-none' : 'line-clamp-4'}
+                  `}
+                >
                   {expandedId === news.id ? news.fullDescription : news.shortDescription}
                 </p>
 
