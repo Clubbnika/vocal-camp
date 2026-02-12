@@ -27,7 +27,7 @@ const Presents = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="w-full h-full bg-black/60 backdrop-blur-sm">
+    <div ref={sectionRef} className="w-full h-full">
       <div 
         className={`
           max-w-[1040px] w-full pt-[60px] pb-45 mx-auto px-4 sm:px-6 lg:px-8
@@ -42,7 +42,6 @@ const Presents = () => {
             ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
           `}
         >
-          {/* Ліва частина — текст */}
           <div 
             className={`
               bg-black p-6 flex flex-col justify-start max-w-md isolation-isolate
@@ -72,7 +71,6 @@ const Presents = () => {
             </div>
           </div>
 
-          {/* Права частина — фото */}
           <div 
             className={`
               bg-white p-5 flex flex-col items-center justify-center max-w-md
