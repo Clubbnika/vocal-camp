@@ -10,6 +10,28 @@ import PageLoader from "@/components/ui/PageLoader";
 
 import { Wix_Madefor_Display } from 'next/font/google';
 
+// 👉 Додаємо метадані для красивого відображення в соцмережах (SEO & OpenGraph)
+export const metadata = {
+  title: "Vocal Camp — Твоя вокальна сім'я",
+  description: "Уроки вокалу, мюзикли та квартирники в Києві. Навчимо співати кожного! Записуйся на безкоштовний майстер-клас.",
+  openGraph: {
+    title: "Vocal Camp — Вокальна студія",
+    description: "Навчимо співати кожного! Записуйся на безкоштовний майстер-клас.",
+    url: "https://vocal-camp.vercel.app",
+    siteName: "Vocal Camp",
+    locale: "uk_UA",
+    type: "website",
+    images: [
+      {
+        url: "https://vocal-camp.vercel.app/logo.webp", // Тут може бути посилання на твій логотип або банер
+        width: 1200,
+        height: 630,
+        alt: "Логотип Vocal Camp",
+      },
+    ],
+  },
+};
+
 const wixFont = Wix_Madefor_Display({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '800'],
