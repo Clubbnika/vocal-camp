@@ -243,14 +243,13 @@ export default function BurgerMenu() {
           display: block;
           position: relative;
           color: #FFF;
-          font-family: 'Ek Mukta', sans-serif;
           font-weight: 200;
           text-decoration: none;
           font-size: 16px;
           line-height: 2.35;
           width: 100%;
           transition: color 0.3s ease;
-          padding: 10px 0;
+          padding: 3px 0;
         }
 
         li.menu-item a:hover {
