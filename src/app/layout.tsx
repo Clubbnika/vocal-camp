@@ -11,8 +11,8 @@ import PageLoader from "@/components/ui/PageLoader";
 import { Wix_Madefor_Display } from 'next/font/google';
 
 export const metadata = {
-  title: "Vocal Camp — Твоя вокальна сім'я",
-  description: "Уроки вокалу, мюзикли та квартирники в Києві. Навчимо співати кожного! Записуйся на безкоштовний майстер-клас.",
+  title: "Студія вокалу Vocal Camp Київ | Уроки співу для дорослих | Твоя вокальна сім'я",
+  description: "Школа вокалу в Києві. Групові та індивідуальні заняття, курси вокалу для початківців та виступи на сцені. Записуйся на безкоштовне заняття! ✅",
   openGraph: {
     title: "Vocal Camp — Вокальна студія",
     description: "Навчимо співати кожного! Записуйся на безкоштовний майстер-клас.",
