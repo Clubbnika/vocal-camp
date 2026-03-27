@@ -12,10 +12,9 @@ import BurgerMenu from '@/components/ui/BurgerMenu';
 const RootLayoutContent = ({ children }: PropsWithChildren) => {
   return (
     <>
-      {/* Фіксований фон через Image — працює стабільно на iOS Safari */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <Image
-          src="/bgg.webp"
+          src="/phone.webp"
           alt="background"
           fill
           className="object-cover"
@@ -76,15 +75,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
           }
 
           .header-container header {
-            width: 100vw !important;
-            margin: 0 !important;
-            padding: 2px 0 !important;
+            width: 100vw;
+            margin: 0;
+            padding: 2px 0;
             box-sizing: border-box;
-            background: black !important;
+            background: black;
             position: fixed;
             top: 0;
             z-index: 10;
-            left: 0 !important;
+            left: 0;
           }
 
           .burger-menu-container {
@@ -102,23 +101,17 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
           @media (min-width: 1001px) and (max-width: 1190px) {
             .header-container header {
-              width: 100vw !important;
-              margin: 0 !important;
-              padding: 0 !important;
+              width: 100vw;
+              margin: 0;
+              padding: 0;
               box-sizing: border-box;
-              left: 0 !important;
+              left: 0;
             }
           }
-
-          /* Десктопний фон (залишаємо bg-fixed) */
-          @media (min-width: 768px) {
-            body {
-              background: url('/phone.webp') center/cover no-repeat fixed;
-            }
-          }
-        `}</style>
+        `
+        }</style>
       </head>
-      <body className="relative min-h-screen bg-black">   {/* bg-black як запасний фон */}
+      <body className="relative min-h-screen bg-black">
         <TabProvider>
           <RootLayoutContent>{children}</RootLayoutContent>
         </TabProvider>

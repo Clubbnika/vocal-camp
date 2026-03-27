@@ -246,7 +246,7 @@ export default function BurgerMenu() {
           font-family: 'Ek Mukta', sans-serif;
           font-weight: 200;
           text-decoration: none;
-          font-size: 18px;
+          font-size: 16px;
           line-height: 2.35;
           width: 100%;
           transition: color 0.3s ease;
