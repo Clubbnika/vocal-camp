@@ -188,6 +188,7 @@ const RegisterMasterClassTab = ({
         </div>
       )}
       
+      
       <button 
         type="submit" 
         disabled={isLoading} 
