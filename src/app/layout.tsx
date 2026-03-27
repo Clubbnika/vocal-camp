@@ -8,18 +8,20 @@ import { TabProvider } from "@/components/ui/TabContext";
 import BurgerMenu from '@/components/ui/BurgerMenu';
 import PageLoader from "@/components/ui/PageLoader";
 
+import { Wix_Madefor_Display } from 'next/font/google';
+
+const wixFont = Wix_Madefor_Display({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '800'],
+  display: 'swap',
+});
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="uk">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="relative min-h-screen bg-black">
+      <head /> 
+      
+      <body className={`${wixFont.className} relative min-h-screen bg-black antialiased`}>
         <PageLoader />
 
         <style>{`
