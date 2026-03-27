@@ -54,11 +54,11 @@ body {
 }
 
 .animate-moving-right {
-  animation: moving-right 100s linear infinite;
+  animation: moving-right 50s linear infinite;
 }
 
 .animate-moving-left {
-  animation: moving-left 100s linear infinite;
+  animation: moving-left 50s linear infinite;
 }
 
 @layer utilities {
