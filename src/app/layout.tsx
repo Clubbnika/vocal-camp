@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://vocal-camp.vercel.app/logo.webp",
+        url: "https://vocal-camp.vercel.app/prev.webp",
         width: 1200,
         height: 630,
         alt: "Логотип Vocal Camp",
@@ -62,15 +62,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
           }
 
           .header-container header {
-            width: 100vw !important;
-            margin: 0 !important;
-            padding: 2px 0 !important;
+            width: 100vw;
+            margin: 0;
+            padding: 2px 0;
             box-sizing: border-box;
-            background: black !important;
+            background: black;
             position: fixed;
             top: 0;
             z-index: 10;
-            left: 0 !important;
+            left: 0;
           }
 
           .burger-menu-container {
@@ -84,12 +84,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
           @media (min-width: 1001px) and (max-width: 1190px) {
             .header-container header {
-              width: 100vw !important;
+              width: 100vw;
               left: 0 !important;
             }
           }
 
-          /* Стилі лоадера (ті самі очі) */
           @keyframes eyeMove {
             0%, 10%   { transform: translate(0px, 0px); }
             13%, 40%  { transform: translate(-15px, 0px); }
