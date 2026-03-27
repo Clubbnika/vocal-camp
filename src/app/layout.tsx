@@ -10,7 +10,6 @@ import PageLoader from "@/components/ui/PageLoader";
 
 import { Wix_Madefor_Display } from 'next/font/google';
 
-// 👉 Додаємо метадані для красивого відображення в соцмережах (SEO & OpenGraph)
 export const metadata = {
   title: "Vocal Camp — Твоя вокальна сім'я",
   description: "Уроки вокалу, мюзикли та квартирники в Києві. Навчимо співати кожного! Записуйся на безкоштовний майстер-клас.",
@@ -23,7 +22,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://vocal-camp.vercel.app/logo.webp", // Тут може бути посилання на твій логотип або банер
+        url: "https://vocal-camp.vercel.app/logo.webp",
         width: 1200,
         height: 630,
         alt: "Логотип Vocal Camp",
