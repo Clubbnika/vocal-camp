@@ -1,6 +1,4 @@
-'use client';
-
-import { PropsWithChildren, useState, useEffect } from "react";
+import { PropsWithChildren } from "react";
 import Image from 'next/image';
 import "@/app/globals.css";
 import { Header } from "@/components/ui/Header";
@@ -8,47 +6,9 @@ import Footer from "@/components/ui/Footer";
 import TopButton from "@/components/ui/TopButton";
 import { TabProvider } from "@/components/ui/TabContext";
 import BurgerMenu from '@/components/ui/BurgerMenu';
-
-const RootLayoutContent = ({ children }: PropsWithChildren) => {
-  return (
-    <>
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <Image
-          src="/phone.webp"
-          alt="background"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
-      </div>
-
-      <div className="header-container">
-        <Header />
-      </div>
-      <div className="burger-menu-container">
-        <BurgerMenu />
-      </div>
-      {children}
-      <TopButton />
-      <div id="contacts">
-        <Footer />
-      </div>
-    </>
-  );
-};
+import PageLoader from "@/components/ui/PageLoader";
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  const [showLoader, setShowLoader] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 2800);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <html lang="uk">
       <head>
@@ -58,7 +18,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
           href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;800&display=swap"
           rel="stylesheet"
         />
-        <style jsx global>{`
+      </head>
+      <body className="relative min-h-screen bg-black">
+        <PageLoader />
+
+        <style>{`
           html, body {
             margin: 0;
             padding: 0;
@@ -75,15 +39,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
           }
 
           .header-container header {
-            width: 100vw;
-            margin: 0;
-            padding: 2px 0;
+            width: 100vw !important;
+            margin: 0 !important;
+            padding: 2px 0 !important;
             box-sizing: border-box;
-            background: black;
+            background: black !important;
             position: fixed;
             top: 0;
             z-index: 10;
-            left: 0;
+            left: 0 !important;
           }
 
           .burger-menu-container {
@@ -91,29 +55,82 @@ export default function RootLayout({ children }: PropsWithChildren) {
           }
 
           @media (max-width: 1000px) {
-            .header-container {
-              display: none;
-            }
-            .burger-menu-container {
-              display: block;
-            }
+            .header-container { display: none; }
+            .burger-menu-container { display: block; }
           }
 
           @media (min-width: 1001px) and (max-width: 1190px) {
             .header-container header {
-              width: 100vw;
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-              left: 0;
+              width: 100vw !important;
+              left: 0 !important;
             }
           }
-        `
-        }</style>
-      </head>
-      <body className="relative min-h-screen bg-black">
+
+          /* Стилі лоадера (ті самі очі) */
+          @keyframes eyeMove {
+            0%, 10%   { transform: translate(0px, 0px); }
+            13%, 40%  { transform: translate(-15px, 0px); }
+            43%, 70%  { transform: translate(15px, 0px); }
+            73%, 90%  { transform: translate(0px, 15px); }
+            93%, 100% { transform: translate(0px, 0px); }
+          }
+
+          @keyframes blink {
+            0%, 8%, 10%, 18%, 20%, 38%, 40%, 58%, 60%, 68%, 70%, 88%, 90%, 98%, 100% { transform: scaleY(1); }
+            9%, 19%, 39%, 59%, 69%, 89%, 99% { transform: scaleY(0.4); }
+          }
+
+          .eye {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            overflow: hidden;
+            animation: blink 9s infinite;
+          }
+
+          .eye-iris-pupil {
+            position: absolute;
+            inset: 10px;
+            background: #ff00be;
+            border-radius: 50%;
+            animation: eyeMove 9s infinite;
+          }
+
+          .eye-pupil {
+            position: absolute;
+            inset: 12px;
+            background: #000000;
+            border-radius: 50%;
+          }
+        `}</style>
+
         <TabProvider>
-          <RootLayoutContent>{children}</RootLayoutContent>
+          <div className="fixed inset-0 -z-10 overflow-hidden">
+            <Image
+              src="/phone.webp"
+              alt="background"
+              fill
+              className="object-cover"
+              priority
+              quality={90}
+            />
+          </div>
+
+          <div className="header-container">
+            <Header />
+          </div>
+          <div className="burger-menu-container">
+            <BurgerMenu />
+          </div>
+
+          {children}
+
+          <TopButton />
+          <div id="contacts">
+            <Footer />
+          </div>
         </TabProvider>
       </body>
     </html>
