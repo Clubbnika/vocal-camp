@@ -98,7 +98,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           }
         `}</style>
       </head>
-      <body className="relative min-h-screen md:bg-[url('/phone.webp')] bg-[url('/bgg.webp')] bg-cover bg-center bg-repeat bg-fixed">
+      <body className="relative min-h-screen md:bg-[url('/phone.webp')] bg-[url('/bgg.webp')] bg-cover bg-center bg-repeat md:bg-fixed">
         <TabProvider>
           {/* Закоментували лоадер з чорним фоном — сторінка відкривається одразу */}
           {/* {showLoader ? (
