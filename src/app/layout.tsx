@@ -96,39 +96,39 @@ export default function RootLayout({ children }: PropsWithChildren) {
               left: 0 !important;
             }
           }
+
+          /* === Надійний фікс фону для iOS Safari та мобільних пристроїв === */
+          body {
+            background-attachment: scroll !important;
+            background-size: cover !important;
+            background-position: center center !important;
+          }
+
+          @supports (-webkit-touch-callout: none) {
+            body {
+              background-attachment: scroll !important;
+              background-size: cover !important;
+              background-position: center center !important;
+            }
+          }
+
+          /* Для десктопу та планшетів — фіксований фон */
+          @media (min-width: 768px) {
+            body {
+              background-attachment: fixed !important;
+            }
+          }
         `}</style>
       </head>
-<body className="relative min-h-screen 
+      <body className="relative min-h-screen 
         bg-[url('/bgg.webp')] 
         bg-cover 
         bg-center 
         bg-no-repeat
-        md:bg-[url('/phone.webp')] 
-        md:bg-fixed
+        md:bg-[url('/phone.webp')]
       ">
-                <TabProvider>
-          {/* Закоментували лоадер з чорним фоном — сторінка відкривається одразу */}
-          {/* {showLoader ? (
-            <div 
-              className="loader-overlay fixed inset-0 z-[9999] flex items-center justify-center bg-black"
-            >
-              <div className="flex items-center gap-6">
-                <div className="eye">
-                  <div className="eye-iris-pupil">
-                    <div className="eye-pupil" />
-                  </div>
-                </div>
-
-                <div className="eye">
-                  <div className="eye-iris-pupil">
-                    <div className="eye-pupil" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : ( */}
-            <RootLayoutContent>{children}</RootLayoutContent>
-          {/* )} */}
+        <TabProvider>
+          <RootLayoutContent>{children}</RootLayoutContent>
         </TabProvider>
       </body>
     </html>
