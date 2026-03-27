@@ -207,8 +207,14 @@ const News: React.FC = () => {
   `;
 
   return (
-    <div ref={sectionRef} className="w-full h-full overflow-hidden relative">
-      <div className="max-w-[1040px] w-full flex flex-col py-20 mx-auto px-4 relative">
+    <div 
+      ref={sectionRef} 
+      className="w-full h-full overflow-hidden relative
+                 before:absolute before:inset-0 before:w-screen before:h-full 
+                 before:bg-gradient-to-b before:from-black before:to-transparent 
+                 before:-z-10 before:left-1/2 before:-translate-x-1/2"
+    >
+      <div className="max-w-[1040px] w-full flex flex-col py-20 mx-auto px-4 relative z-0">
         
         <div 
           className={`
@@ -248,7 +254,7 @@ const News: React.FC = () => {
               width: isMobile ? `${itemWidth}px` : '100%',
             }}
           >
-            <div className="flex gap-6 items-start md:grid md:grid-cols-3 md:gap-6 md:items-start">
+            <div className="flex gap-6 items-start md:grid md:grid-cols-3 md:gap-6 md:items-start overflow-visible">
               {newsData.map((news, index) => {
                 const currentSlideClass = isMobile
                   ? 'flex-[0_0_100%]'
