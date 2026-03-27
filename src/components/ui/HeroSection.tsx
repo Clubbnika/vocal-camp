@@ -26,6 +26,7 @@ export default function HeroSection() {
           width={300}
           height={300}
           className="mb-4"
+          priority
         />
         <button
           onClick={handleButtonClick}
