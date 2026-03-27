@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 const Portfolio = () => {
   const containerVariants = {
@@ -30,9 +32,15 @@ const Portfolio = () => {
           viewport={{ once: true, amount: 0.2 }} 
           className="flex flex-col md:flex-row w-full mx-auto justify-center px-4 gap-4 mb-8"
         >
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/LASgA6FLTFM?si=thq_LwWOCRuVjiCm" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/e73GfUXs70g?si=yVRwNlfiu3Qkg2eY" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/LWJOfSRnAx8?si=4THUvgxAQ9lTu9_Q" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="LASgA6FLTFM" title="Виступ учня" poster="maxresdefault" />
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="e73GfUXs70g" title="Виступ учня" poster="maxresdefault" />
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="LWJOfSRnAx8" title="Виступ учня" poster="maxresdefault" />
+          </motion.div>
         </motion.div>
 
         <h1 className="text-white font-extrabold text-4xl text-center mb-4 pt-4">Пісні наших учнів</h1>
@@ -43,9 +51,15 @@ const Portfolio = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col md:flex-row w-full mx-auto justify-center px-4 gap-4 mb-4"
         >
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/mWCe8-KCwMY?si=MTquJT4fw6jwCv-7" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/8CUN9F40ssc?si=zB7skyhXUUhvkQSp" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/LeQuaHkKgvE?si=_r4PlolmoHZuMlEn" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="mWCe8-KCwMY" title="Пісня учня" poster="maxresdefault" />
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="8CUN9F40ssc" title="Пісня учня" poster="maxresdefault" />
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="LeQuaHkKgvE" title="Пісня учня" poster="maxresdefault" />
+          </motion.div>
         </motion.div>
 
         <motion.div 
@@ -55,8 +69,12 @@ const Portfolio = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col md:flex-row w-full mx-auto justify-center px-4 gap-4 mb-8"
         >
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/oEq1VTqhWAI?si=qwBBfbw-yiy4iHVq" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/wdGEk00_WYI?si=asOduNQkVGQxjx5N" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="oEq1VTqhWAI" title="Пісня учня" poster="maxresdefault" />
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="wdGEk00_WYI" title="Пісня учня" poster="maxresdefault" />
+          </motion.div>
         </motion.div>
 
         <h1 className="text-white font-extrabold text-4xl text-center mb-4 pt-4">Мюзикли, поставлені нашими учнями</h1>
@@ -67,9 +85,15 @@ const Portfolio = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col md:flex-row w-full mx-auto justify-center px-4 gap-4"
         >
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/ORQGY3T4AS8?si=Ajjm95udjowxwfDt" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/5uVoLDR-oK4?si=MLb7YLTBmns67rwA" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
-          <motion.iframe variants={itemVariants} src="https://www.youtube.com/embed/rJtoYWTs3Ns?si=JetgljDo9Q7w3ain" frameBorder="0" allowFullScreen className="w-full md:w-1/3 h-[200px]" />
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="ORQGY3T4AS8" title="Мюзикл" poster="maxresdefault" />
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="5uVoLDR-oK4" title="Мюзикл" poster="maxresdefault" />
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full md:w-1/3 h-[200px] rounded-lg overflow-hidden">
+            <LiteYouTubeEmbed id="rJtoYWTs3Ns" title="Мюзикл" poster="maxresdefault" />
+          </motion.div>
         </motion.div>
 
       </div>
