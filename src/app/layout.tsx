@@ -1,6 +1,7 @@
 'use client';
 
 import { PropsWithChildren, useState, useEffect } from "react";
+import Image from 'next/image';
 import "@/app/globals.css";
 import { Header } from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
@@ -11,6 +12,18 @@ import BurgerMenu from '@/components/ui/BurgerMenu';
 const RootLayoutContent = ({ children }: PropsWithChildren) => {
   return (
     <>
+      {/* Фіксований фон через Image — працює стабільно на iOS Safari */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <Image
+          src="/bgg.webp"
+          alt="background"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+      </div>
+
       <div className="header-container">
         <Header />
       </div>
@@ -97,36 +110,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
             }
           }
 
-          /* === Надійний фікс фону для iOS Safari та мобільних пристроїв === */
-          body {
-            background-attachment: scroll !important;
-            background-size: cover !important;
-            background-position: center center !important;
-          }
-
-          @supports (-webkit-touch-callout: none) {
-            body {
-              background-attachment: scroll !important;
-              background-size: cover !important;
-              background-position: center center !important;
-            }
-          }
-
-          /* Для десктопу та планшетів — фіксований фон */
+          /* Десктопний фон (залишаємо bg-fixed) */
           @media (min-width: 768px) {
             body {
-              background-attachment: fixed !important;
+              background: url('/phone.webp') center/cover no-repeat fixed;
             }
           }
         `}</style>
       </head>
-      <body className="relative min-h-screen 
-        bg-[url('/bgg.webp')] 
-        bg-cover 
-        bg-center 
-        bg-no-repeat
-        md:bg-[url('/phone.webp')]
-      ">
+      <body className="relative min-h-screen bg-black">   {/* bg-black як запасний фон */}
         <TabProvider>
           <RootLayoutContent>{children}</RootLayoutContent>
         </TabProvider>
