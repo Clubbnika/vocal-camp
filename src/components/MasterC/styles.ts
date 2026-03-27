@@ -7,6 +7,6 @@ export const DATE_BUTTON_BASE_STYLE = 'p-2 text-center cursor-pointer';
 export const DATE_BUTTON_AVAILABLE_STYLE = 'bg-[#ff00be] text-white';
 export const DATE_BUTTON_AVAILABLE_STYLE_CLICKED = 'border-3 border-white';
 export const DATE_BUTTON_UNAVAILABLE_STYLE = 'bg-gray-500 text-gray-200';
-export const DATE_BUTTON_DISABLED_STYLE = 'cursor-not-allowed opacity-50';
+export const DATE_BUTTON_DISABLED_STYLE = 'bg-gray-500 text-white/50 cursor-not-allowed';
 export const ARROW_BUTTON_STYLE = 'hover:bg-[#ff00be] text-white p-1 rounded-full cursor-pointer';
 export const SUBMIT_BUTTON_STYLE = 'hover:bg-[#ff00be] bg-white text-black py-2 px-6 mt-4 cursor-pointer';

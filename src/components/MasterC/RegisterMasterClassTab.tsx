@@ -106,7 +106,8 @@ const RegisterMasterClassTab = ({
           const formattedDate = date.toISOString().split('T')[0];
           const dayName = getDayName(date);
           const isAvailable = isDayAvailable(day);
-          const isDisabled = day === 1 || day === 2;
+          
+          const isDisabled = day === 1 || day === 2 || day === 3;
           const daySlots = allowedSlots[day] || [];
 
           return (
@@ -114,10 +115,10 @@ const RegisterMasterClassTab = ({
               <button
                 onClick={() => onDateChange(formattedDate)}
                 className={`${DATE_BUTTON_BASE_STYLE} ${
-                  isAvailable ? DATE_BUTTON_AVAILABLE_STYLE : DATE_BUTTON_UNAVAILABLE_STYLE
-                } ${selectedDate === formattedDate ? DATE_BUTTON_AVAILABLE_STYLE_CLICKED : ''} ${
-                  isDisabled ? DATE_BUTTON_DISABLED_STYLE : ''
-                }`}
+                  isDisabled 
+                    ? DATE_BUTTON_DISABLED_STYLE 
+                    : isAvailable ? DATE_BUTTON_AVAILABLE_STYLE : DATE_BUTTON_UNAVAILABLE_STYLE
+                } ${selectedDate === formattedDate ? DATE_BUTTON_AVAILABLE_STYLE_CLICKED : ''}`}
                 disabled={isDisabled}
               >
                 {dayName}, {formatDate(date)}
