@@ -81,7 +81,7 @@ const RegisterMasterClassTab = ({
   return (
     <form onSubmit={handleSubmitWrapper} className="flex flex-col gap-2 text-white">
       <div className="flex items-center justify-between w-full text-sm">
-        <label htmlFor="date">Оберіть дату:</label>
+<span>Оберіть дату:</span>
         <div className="flex">
           <button
             onClick={() => onWeekChange(currentWeek - 1)}
@@ -188,7 +188,7 @@ const RegisterMasterClassTab = ({
         </div>
       )}
       
-      
+
       <button 
         type="submit" 
         disabled={isLoading} 
