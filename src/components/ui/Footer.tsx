@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Instagram, Send, Youtube, MapPin } from "lucide-react";
 import Link from 'next/link';
 import PolicyModal from './Policy';
@@ -17,10 +18,14 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-2 md:gap-30 pt-4 mx-auto max-w-[1040px] w-full px-4 py-8">
 
           <div className="flex-1 flex flex-col gap-2 text-[12px]">
-            <img
+            <Image
               src="/logotext.webp"
               alt="Vocal Camp logo"
               className="h-7 w-54 ml-[-4px]"
+              width={300}
+              height={50}
+              priority     
+              unoptimized
             />
             <p className="text-[#ff00be]">Вокал саме для тебе.</p>
             <a 
@@ -62,7 +67,7 @@ const Footer = () => {
               Локація
             </h1>
             <a 
-              href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%D0%BD%D0%BE-%D0%9A%D1%83%D0%B4%D1%80%D1%8F%D0%B2%D1%81%D0%BA%D0%B0%D1%8F,+26,+%D0%9A%D0%B8%D0%B5%D0%B2,+02000/@50.4509507,30.4966386,17z/data=!3m1!4b1!4m6!3m5!1s0x40d4ce603eea0cd9:0x1beb866382ed7f9a!8m2!3d50.4509507!4d30.4966386!16s%2Fg%2F1v5_7yvq?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" 
+              href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%D0%BD%D0%BE-%D0%9A%D1%83%D0%B4%D1%80%D1%8F%D0%B2%D1%81%D0%BA%D0%B0%D1%8F,+26,+%D0%9A%D0%B8%D1%94%D0%B2,+02000/@50.4509507,30.4966386,17z/data=!3m1!4b1!4m6!3m5!1s0x40d4ce603eea0cd9:0x1beb866382ed7f9a!8m2!3d50.4509507!4d30.4966386!16s%2Fg%2F1v5_7yvq?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[12px] text-white/60 hover:text-[#ff00be] transition leading-tight"

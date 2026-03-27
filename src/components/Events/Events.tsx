@@ -1,5 +1,6 @@
 'use client';
 import { useState, useMemo, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const CONTAINER_STYLE = 'w-full h-full bg-gradient-to-b to-transparent from-black/70 px-4';
 const INNER_CONTAINER_STYLE = 'max-w-[1040px] w-full flex-col flex pt-35 pb-35 mx-auto';
@@ -60,10 +61,12 @@ const Events = () => {
           className={`${EVENT_ITEM_STYLE} transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           style={{ transitionDelay: `${index * 150}ms` }}
         >
-          <img
+          <Image
             src={event.imageSrc}
             alt={event.alt}
             className={IMAGE_STYLE}
+            width={280}
+            height={280}
           />
           <p className={TEXT_STYLE}>
             {event.text}

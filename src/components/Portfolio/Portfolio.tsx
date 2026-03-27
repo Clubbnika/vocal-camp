@@ -30,7 +30,7 @@ const Portfolio = () => {
         <h1 className="text-white font-extrabold text-4xl text-center mb-4 pt-4">Пісні наших учнів</h1>
         <div className="flex flex-col md:flex-row w-full mx-auto justify-center pr-4 pl-4 gap-4 mb-4">
           <iframe
-            src="https://www.youtube.com/embed/x08qh2KgO4g?si=pboSztda4e750CRt"
+            src="https://www.youtube.com/embed/mWCe8-KCwMY?si=MTquJT4fw6jwCv-7"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

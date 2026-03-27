@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const Presents = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -79,10 +80,12 @@ const Presents = () => {
             `}
             style={{ transitionDelay: '300ms' }}
           >
-            <img
+            <Image
               src="/present.webp"
               alt="Подарунковий сертифікат Вокал Кемп"
               className="max-h-85 object-cover w-full"
+              width={500}
+              height={600}
             />
           </div>
         </div>

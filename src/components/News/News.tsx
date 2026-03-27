@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface NewsItem {
@@ -131,10 +132,11 @@ const News: React.FC = () => {
               style={{ transitionDelay: `${index * 250}ms` }}
             >
               <div className="relative overflow-hidden h-56">
-                <img
+                <Image
                   src={news.imageUrl}
                   alt={news.title}
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  fill
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -115,8 +116,14 @@ const Article: React.FC<ArticleProps> = ({ data }) => {
           </button>
         )}
       </div>
-      <img src={image} alt={name} className="w-[280px] object-cover transition-all duration-300" 
-           style={{ height: isExpanded ? '400px' : '280px' }} />
+      <Image 
+        src={image} 
+        alt={name} 
+        className="w-[280px] object-cover transition-all duration-300" 
+        style={{ height: isExpanded ? '400px' : '280px' }}
+        width={280}
+        height={400}
+      />
     </figure>
   );
 };

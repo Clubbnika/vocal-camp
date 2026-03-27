@@ -8,10 +8,11 @@ import {
   PARAGRAPH_STYLE,
   PARAGRAPH_STYLE_INVERTED,
   BUTTON_STYLE,
-} from '@/components/About/styles'
+} from '@/components/About/styles';
 import { motion } from "framer-motion";
 import { useState } from 'react';
 import PriceModal from '../PriceModal/PriceModal';
+import Image from 'next/image';
 
 interface SectionCardProps {
   heading: string;
@@ -46,13 +47,8 @@ const SectionCard = ({
 }: SectionCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const imageBgClass = inverted ? 'bg-black' : 'bg-white';
   const textBgClass = inverted ? 'bg-white' : 'bg-black';
@@ -66,11 +62,26 @@ const SectionCard = ({
       {imageFirst ? (
         <>
           <div className={`${CARD_CONTAINER_STYLE} ${imageBgClass} ${extraClass || ''} overflow-hidden`}>
-            <img src={imageSrc} alt={imageAlt} className={`${imageClass} w-full md:w-auto`} />
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              className={`${imageClass} w-full md:w-auto`}
+              width={0}        
+              height={0}       
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={false} 
+              style={{ width: '100%', height: 'auto' }}
+            />
           </div>
+
           <div className={`${CARD_CONTAINER_STYLE} ${textBgClass} p-4 md:p-0`}>
-            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mb-2 pt-4 md:ml-10 md:pt-4`}>{heading}</h1>
-            <p className={`${paragraphStyle} mb-4`} dangerouslySetInnerHTML={{ __html: text }} />
+            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mb-2 pt-4 md:ml-10 md:pt-4`}>
+              {heading}
+            </h1>
+            <p 
+              className={`${paragraphStyle} mb-4`} 
+              dangerouslySetInnerHTML={{ __html: text }} 
+            />
             {hasButton && (
               <button
                 onClick={openModal}
@@ -85,8 +96,13 @@ const SectionCard = ({
       ) : (
         <>
           <div className={`${CARD_CONTAINER_STYLE} ${textBgClass} p-4 md:p-0 md:mr-5`}>
-            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mb-2 pt-4 md:mr-4 md:pt-4`}>{heading}</h1>
-            <p className={`${paragraphStyle} mb-4`} dangerouslySetInnerHTML={{ __html: text }} />
+            <h1 className={`${headingStyle || HEADING_STYLE} ${headingTextClass} mb-2 pt-4 md:mr-4 md:pt-4`}>
+              {heading}
+            </h1>
+            <p 
+              className={`${paragraphStyle} mb-4`} 
+              dangerouslySetInnerHTML={{ __html: text }} 
+            />
             {hasButton && (
               <button
                 onClick={openModal}
@@ -96,8 +112,17 @@ const SectionCard = ({
               </button>
             )}
           </div>
+
           <div className={`${CARD_CONTAINER_STYLE} ${imageBgClass} overflow-hidden`}>
-            <img src={imageSrc} alt={imageAlt} className={`${imageClass} w-full md:w-auto`} />
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              className={`${imageClass} w-full md:w-auto`}
+              width={0}
+              height={0}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ width: '100%', height: 'auto' }}
+            />
           </div>
         </>
       )}
